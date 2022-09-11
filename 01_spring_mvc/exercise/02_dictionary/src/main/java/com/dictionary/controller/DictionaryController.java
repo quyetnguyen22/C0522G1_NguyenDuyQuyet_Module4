@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class DictionaryController {
 
     @Autowired
-    IDictionaryService dictionaryService;
+    private IDictionaryService dictionaryService;
 
     @GetMapping("/dictionary")
     public String dictionary() {
@@ -20,9 +20,9 @@ public class DictionaryController {
 
     @GetMapping("/result")
     public ModelAndView translate(@RequestParam String vocabulary) {
-        if (dictionaryService.showVocabulary(vocabulary)==null){
-            return new ModelAndView("/dictionary","notfound","not found");
+        if (dictionaryService.showVocabulary(vocabulary) == null) {
+            return new ModelAndView("dictionary", "notfound", "not found");
         }
-        return new ModelAndView("/dictionary","vietnam",dictionaryService.showVocabulary(vocabulary));
+        return new ModelAndView("dictionary", "vietnam", dictionaryService.showVocabulary(vocabulary));
     }
 }
