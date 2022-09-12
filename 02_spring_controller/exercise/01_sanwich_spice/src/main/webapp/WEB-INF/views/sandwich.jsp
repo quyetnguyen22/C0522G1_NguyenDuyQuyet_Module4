@@ -14,7 +14,7 @@
 <body>
 <h3>Sandwich Condiments</h3>
 
-<form action="/choose" >
+<form action="/choose">
     <input type="checkbox" id="lettuce" name="condiments" value="Lettuce">
     <label for="lettuce">Lettuce</label>
     <input type="checkbox" id="tomato" name="condiments" value="Tomato">
