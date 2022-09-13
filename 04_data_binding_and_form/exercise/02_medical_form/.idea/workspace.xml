@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a8bba1fd-6c2e-4b07-896c-c1db1fc98ad1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/controller/SettingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/model/Setting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/ISettingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/impl/SettingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/ISettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/impl/SettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/views/configuration.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/views/email.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/controller/MedicalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/model/Medical.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/medicalForm.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/controller/CalculatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/controller/CalculatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/ICalculatorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/ICalculatorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/impl/CalculatorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/impl/CalculatorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/libs/02_calculator-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/libs/02_calculator-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/controller/CalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/controller/CalculatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/ICalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/ICalculatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/impl/CalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/impl/CalculatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../practice/01_form_and_data_binding/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../practice/01_form_and_data_binding/.idea/gradle.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2Ei0o26DTdw2hzvhWCxuBEXfxVT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CodeGym\C0522G1_NguyenDuyQuyet_module4\04_data_binding_and_form\exercise\02_medical_form\src\main\webapp\WEB-INF" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a8bba1fd-6c2e-4b07-896c-c1db1fc98ad1" name="Changes" comment="" />
+      <created>1663063277600</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663063277600</updated>
+      <workItem from="1663063281483" duration="1115000" />
+      <workItem from="1663067291880" duration="599000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
