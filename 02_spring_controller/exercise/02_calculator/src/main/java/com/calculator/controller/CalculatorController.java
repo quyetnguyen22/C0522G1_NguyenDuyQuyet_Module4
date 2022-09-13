@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CalculatorController {
     @Autowired
-    ICalculatorService calculatorService;
+    private ICalculatorService calculatorService;
 
     @GetMapping("/input")
     public String input() {

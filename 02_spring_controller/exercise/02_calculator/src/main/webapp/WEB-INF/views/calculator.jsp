@@ -13,9 +13,9 @@
 <body>
 <h3>Calculator</h3>
 <form action="/calculator">
-    <input type="text" name="num1">
-    <input type="text" name="num2"> <br>
-    <h4>Result: <input type="text" disabled value="${result}"></h4>
+    <input type="text" name="num1" placeholder="first number">
+    <input type="text" name="num2" placeholder="second number"> <br>
+    <h4>Result: ${result}</h4>
     <button type="submit" name="cal" value="+">Addition(+)</button>
     <button type="submit" name="cal" value="-">Subtraction(-)</button>
     <button type="submit" name="cal" value="x">Multiplication(x)</button>

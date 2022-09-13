@@ -6,16 +6,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class CalculatorService implements ICalculatorService {
 
-    public double calculator(double num1, double num2, String cal) {
+    public String calculator(double num1, double num2, String cal) {
+
         switch (cal) {
             case "/":
-                return num1 / num2;
+                if (num2 == 0) {
+                    return "The second number must be different from number 0";
+                }
+                return String.valueOf(num1 / num2);
             case "-":
-                return num1 - num2;
+                return String.valueOf(num1 - num2);
             case "x":
-                return num1 * num2;
+                return String.valueOf(num1 * num2);
             default:
-                return num1 + num2;
+                return String.valueOf(num1 + num2);
         }
     }
 }
