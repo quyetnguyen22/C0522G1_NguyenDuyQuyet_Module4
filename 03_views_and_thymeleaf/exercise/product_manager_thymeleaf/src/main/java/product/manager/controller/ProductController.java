@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import product.manager.model.Product;
 import product.manager.service.IProductService;
+
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -61,5 +64,11 @@ public class ProductController {
         attributes.addFlashAttribute("msgDelete", "Deleted " + product.getProductName() + " successfully!");
         productService.deleteProduct(id);
         return "redirect:/productList";
+    }
+
+    @GetMapping("/searchProduct")
+    public ModelAndView searchProduct(@ModelAttribute Product product) {
+        List<Product> products = productService.searchProduct(product.getProductName());
+        return new ModelAndView("list", "product" , products);
     }
 }
