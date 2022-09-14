@@ -8,5 +8,5 @@ public interface ISettingRepository {
     List<String > languages();
     List<Integer> getPageSize();
     Setting getEmail();
-    void saveConfig(Setting email);
+    Setting saveConfig(Setting email);
 }

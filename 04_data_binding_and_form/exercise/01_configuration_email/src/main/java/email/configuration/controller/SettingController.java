@@ -40,8 +40,7 @@ public class SettingController {
 
     @GetMapping("/save")
     public String saveConfig(@ModelAttribute Setting email, Model model) {
-        configuration.saveConfig(email);
-        model.addAttribute("email", configuration.getEmail());
+        model.addAttribute("email", configuration.saveConfig(email));
         return "configuration";
     }
 

@@ -29,7 +29,7 @@ public class SettingService implements ISettingService {
     }
 
     @Override
-    public void saveConfig(Setting email) {
-        configuration.saveConfig(email);
+    public Setting saveConfig(Setting email) {
+        return configuration.saveConfig(email);
     }
 }

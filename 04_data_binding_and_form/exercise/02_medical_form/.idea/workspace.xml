@@ -5,44 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8bba1fd-6c2e-4b07-896c-c1db1fc98ad1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/controller/SettingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/model/Setting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/ISettingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/impl/SettingRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/ISettingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/impl/SettingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/views/configuration.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/views/email.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/controller/MedicalController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/model/Medical.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/medicalForm.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/repository/IMedicalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/repository/impl/MedicalRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/service/IMedicalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medical/form/service/impl/MedicalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/info.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/controller/CalculatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/controller/CalculatorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/ICalculatorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/ICalculatorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/impl/CalculatorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/classes/java/main/com/calculator/service/impl/CalculatorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/libs/02_calculator-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/libs/02_calculator-1.0-SNAPSHOT.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/controller/CalculatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/controller/CalculatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/ICalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/ICalculatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/impl/CalculatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_spring_controller/exercise/02_calculator/src/main/java/com/calculator/service/impl/CalculatorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../practice/01_form_and_data_binding/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../practice/01_form_and_data_binding/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/controller/SettingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/controller/SettingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/repository/ISettingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/repository/ISettingRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/repository/impl/SettingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/repository/impl/SettingRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/service/ISettingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/service/ISettingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/service/impl/SettingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/classes/java/main/email/configuration/service/impl/SettingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/libs/01_configuration_email-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/libs/01_configuration_email-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/controller/SettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/controller/SettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/ISettingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/ISettingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/impl/SettingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/repository/impl/SettingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/ISettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/ISettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/impl/SettingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_configuration_email/src/main/java/email/configuration/service/impl/SettingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medical/form/controller/MedicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medical/form/controller/MedicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medical/form/model/Medical.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medical/form/model/Medical.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/medicalForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/medicalForm.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,13 +56,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="2Ei0o26DTdw2hzvhWCxuBEXfxVT" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -81,6 +88,97 @@
       <recent name="D:\CodeGym\C0522G1_NguyenDuyQuyet_module4\04_data_binding_and_form\exercise\02_medical_form\src\main\webapp\WEB-INF" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.65" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="HOT_SWAP_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="Gradle : org.example : 02_medical_form-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="9db26e24-a198-4ff7-8362-3005ff6a4b1d" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51823" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : org.example : 02_medical_form-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,7 +188,8 @@
       <option name="presentableId" value="Default" />
       <updated>1663063277600</updated>
       <workItem from="1663063281483" duration="1115000" />
-      <workItem from="1663067291880" duration="599000" />
+      <workItem from="1663067291880" duration="9611000" />
+      <workItem from="1663117514319" duration="1580000" />
     </task>
     <servers />
   </component>

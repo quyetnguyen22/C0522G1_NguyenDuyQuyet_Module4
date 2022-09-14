@@ -1,7 +1,14 @@
 package medical.form.model;
 
+import org.intellij.lang.annotations.Pattern;
+import org.jetbrains.annotations.NotNull;
+
+
 public class Medical {
+    @Pattern(value = "Không được để trống")
     private String fullName;
+//    @Min(value=18, message="must be equal or greater than 18")
+//    @Max(value=45, message="must be equal or less than 45")
     private String dateOfBirth;
     private String gender;
     private String nationality;
@@ -14,6 +21,7 @@ public class Medical {
     private String stayedCity;
 
     public Medical() {
+
     }
 
     public Medical(String fullName, String dateOfBirth, String gender, String nationality, String idNumber,

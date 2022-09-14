@@ -9,7 +9,9 @@ import java.util.List;
 
 @Repository
 public class SettingRepository implements ISettingRepository {
-
+    static {
+        Setting email = new Setting("Vietnam", 10, "Enable spams filter", "signature");
+}
     public List<String > languages() {
         List<String> languageList = new ArrayList<>();
         languageList.add("English");
@@ -37,10 +39,11 @@ public class SettingRepository implements ISettingRepository {
     }
 
     @Override
-    public void saveConfig(Setting email) {
+    public Setting saveConfig(Setting email) {
         email.setLanguages(email.getLanguages());
         email.setPageSize(email.getPageSize());
         email.setSpamsFilter(email.getSpamsFilter());
         email.setSignature(email.getSignature());
+        return getEmail();
     }
 }

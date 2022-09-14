@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
+</head>
+<body>
+<h3 class="text-center">Product</h3>
+<div class="row column-4">
+    <a href="/add" class="btn btn-primary text-decoration-none">Add new product</a>
+</div>
+<div class="row column-4">
+    <h6 class="text-center" style="color: blue" th:text="${msgEdit}"></h6>
+    <h6 class="text-center" style="color: blue" th:text="${msgDelete}"></h6>
+</div>
+<div class="row column-4">
+    <form action="/searchProduct" th:object="${product}">
+        <div class="row" style="--bs-gutter-x: 0">
+            <div class="col-2">
+                <input type="text" th:field="*{productName}" class="form-control form-control-sm" placeholder="Input name">
+            </div>
+            <div class="col-2 px-0">
+                <input type="text" th:field="*{id}" class="form-control form-control-sm"
+                       placeholder="Input phone number">
+            </div>
+
+            <div class="px-0 col-1 text-center">
+                <button type="submit" class="btn btn-secondary btn-sm">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<table class="table table-striped" id="productTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Producer</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${productList}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.productName}"></td>
+        <td th:text="${product.productPrice}"></td>
+        <td th:text="${product.productDetail}"></td>
+        <td th:text="${product.producer}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{/formEdit/__${product.id}__}">Edit</a>
+        </td>
+        <td>
+            <a class="btn btn-danger" th:href="@{/delete/__${product.id}__}">Delete</a>
+<!--            onclick="idDelete('${employee.getId()}', '${employee.getEmployeeName()}')"-->
+<!--            class="text-white btn btn-danger btn-sm" data-bs-toggle="modal"-->
+<!--            data-bs-target="#deleteModal"-->
+        </td>
+        <td>
+            <a class="btn btn-warning" th:href="@{/search/__${product.id}__}">View</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+<!--<form>-->
+<!--    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <input hidden type="text" name="id" id="idDelete">-->
+<!--                    <p>Are you sure that you want to delete <span style="color: red" id="nameDelete"></span>?</p>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                    <button data-bs-toggle="modal" data-bs-target="#informDeleted" name="action" value="delete"-->
+<!--                            type="submit" class="btn btn-danger">Yes-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+
+<!--<script>-->
+<!--    function idDelete(idDel, name) {-->
+<!--        document.getElementById("idDelete").value = idDel;-->
+<!--        document.getElementById("nameDelete").innerHTML = name;-->
+<!--    }-->
+<!--</script>-->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#productTable').dataTable({
+            dom: 'ltip', // an thanh tim kiem
+            lengthChange: false,
+            pageLength: 10
+        });
+    });
+</script>
+</body>
+</html>

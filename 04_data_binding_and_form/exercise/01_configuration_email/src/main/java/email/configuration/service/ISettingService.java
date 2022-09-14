@@ -8,5 +8,5 @@ public interface ISettingService {
     List<String> getLanguages();
     List<Integer> getPageSize();
     Setting getEmail();
-    void saveConfig(Setting email);
+    Setting saveConfig(Setting email);
 }
