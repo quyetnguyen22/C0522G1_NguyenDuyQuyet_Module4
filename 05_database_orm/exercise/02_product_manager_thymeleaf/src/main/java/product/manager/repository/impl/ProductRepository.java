@@ -120,13 +120,13 @@ public class ProductRepository implements IProductRepository {
         List<Product> productList = null;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            productList = session.createQuery("FROM Product where productName ").getResultList();
+            productList = (List<Product>) session.createNativeQuery("select * from Product where productName like %name%");
         } finally {
             if (session != null) {
                 session.close();
             }
         }
-        return productList();
+        return productList;
 //        List<Product> productList = new ArrayList<>();
 //        for (Product product : productMap.values()) {
 //            if (product.getProductName().contains(name)) {
