@@ -2,6 +2,7 @@ package product.manager.repository.impl;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 import product.manager.model.Product;
 import product.manager.repository.IProductRepository;
@@ -67,7 +68,6 @@ public class ProductRepository implements IProductRepository {
         try {
             session = ConnectionUtil.sessionFactory.openSession();
             transaction = session.beginTransaction();
-
             session.merge(product);
             transaction.commit();
         } catch (Exception e) {
@@ -85,11 +85,21 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public boolean deleteProduct(int id) {
+        Transaction transaction = null;
         Session session = null;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            session.remove(id);
-        } finally {
+            transaction = session.beginTransaction();
+            Query query=session.createQuery("delete from Product where id=:id");
+            query.setParameter("id",id);
+            query.executeUpdate();
+//            session.remove(id);
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
+        finally {
             if (session != null) {
                 session.close();
             }
@@ -104,7 +114,8 @@ public class ProductRepository implements IProductRepository {
         Product product;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            product = (Product) session.createQuery("FROM Product where id= :id").setParameter("id", id).getSingleResult();
+            product = (Product) session.createQuery("FROM Product where id= :id").
+                    setParameter("id", id).getSingleResult();
         } finally {
             if (session != null) {
                 session.close();
@@ -120,7 +131,7 @@ public class ProductRepository implements IProductRepository {
         List<Product> productList = null;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            productList = (List<Product>) session.createNativeQuery("select * from Product where productName like %name%");
+            productList = session.createQuery("from Product where productName like %name%");
         } finally {
             if (session != null) {
                 session.close();
