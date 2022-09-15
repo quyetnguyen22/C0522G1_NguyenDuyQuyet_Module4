@@ -6,10 +6,7 @@ import org.springframework.stereotype.Repository;
 import product.manager.model.Product;
 import product.manager.repository.IProductRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class ProductRepository implements IProductRepository {
@@ -58,13 +55,31 @@ public class ProductRepository implements IProductRepository {
                 session.close();
             }
         }
-//        productMap.put(product.getId(), product);
         return true;
+//        productMap.put(product.getId(), product);
+
     }
 
     @Override
     public boolean editProduct(Product product) {
-        productMap.put(product.getId(), product);
+        Transaction transaction = null;
+        Session session = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            transaction = session.beginTransaction();
+
+            session.merge(product);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+//        productMap.put(product.getId(), product);
         return true;
     }
 
@@ -76,17 +91,39 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product showDetail(int id) {
-        return productMap.get(id);
+        Session session = null;
+        Product product;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            product = (Product) session.createQuery("FROM Product where id= :id").setParameter("id", id).getSingleResult();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+        return product;
+//        return productMap.get(id);
     }
 
     @Override
     public List<Product> searchProduct(String name) {
-        List<Product> productList = new ArrayList<>();
-        for (Product product : productMap.values()) {
-            if (product.getProductName().contains(name)) {
-                productList.add(product);
+        Session session = null;
+        List<Product> productList = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            productList = session.createQuery("FROM Product where productName ").getResultList();
+        } finally {
+            if (session != null) {
+                session.close();
             }
         }
-        return productList;
+        return productList();
+//        List<Product> productList = new ArrayList<>();
+//        for (Product product : productMap.values()) {
+//            if (product.getProductName().contains(name)) {
+//                productList.add(product);
+//            }
+//        }
+//        return productList;
     }
 }
