@@ -86,10 +86,9 @@ public class ProductRepository implements IProductRepository {
     @Override
     public boolean deleteProduct(int id) {
         Session session = null;
-        Product product;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            product = (Product) session.createQuery("delete FROM Product where id=:id").setParameter("id", id).getSingleResult();
+            session.createQuery("delete FROM Product where id=:id").setParameter("id", id).getSingleResult();
         } finally {
             if (session != null) {
                 session.close();
