@@ -42,7 +42,7 @@ public class ProductController {
     @GetMapping("/search/{id}")
     public String view(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.showDetail(id));
-        return "";
+        return "view";
     }
 
     @GetMapping("/formEdit/{id}")
@@ -53,7 +53,7 @@ public class ProductController {
 
     @GetMapping("/saveEdit")
     public String saveEditing(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
-        productService.editProduct(product.getId(), product);
+        productService.editProduct(product);
         redirectAttributes.addFlashAttribute("msgEdit", "Edited " + product.getProductName() + " successfully!");
         return "redirect:/productList";
     }
@@ -67,8 +67,8 @@ public class ProductController {
     }
 
     @GetMapping("/searchProduct")
-    public ModelAndView searchProduct(@ModelAttribute Product product) {
-        List<Product> products = productService.searchProduct(product.getProductName());
-        return new ModelAndView("list", "product" , products);
+    public ModelAndView searchProduct(@RequestParam String name) {
+        List<Product> products = productService.searchProduct(name);
+        return new ModelAndView("list", "productList" , products);
     }
 }

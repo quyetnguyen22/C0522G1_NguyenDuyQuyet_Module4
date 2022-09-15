@@ -33,8 +33,8 @@ public class ProductRepository implements IProductRepository {
     }
 
     @Override
-    public boolean editProduct(int id, Product product) {
-        productMap.put(id, product);
+    public boolean editProduct(Product product) {
+        productMap.put(product.getId(), product);
         return true;
     }
 

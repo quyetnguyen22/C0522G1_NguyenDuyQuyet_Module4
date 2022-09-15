@@ -13,7 +13,7 @@ public interface IProductRepository {
     boolean addNewProduct(Product product);
 
     //    Cập nhật thông tin sản phẩm
-    boolean editProduct(int id, Product product);
+    boolean editProduct(Product product);
 
     //    Xoá một sản phẩm
     boolean deleteProduct(int id);
