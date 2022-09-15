@@ -128,10 +128,12 @@ public class ProductRepository implements IProductRepository {
     @Override
     public List<Product> searchProduct(String name) {
         Session session = null;
-        List<Product> productList = null;
+        List<Product> productList;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            productList = session.createQuery("from Product where productName like %name%");
+            Query query = session.createQuery("from Product where productName like :name");
+            query.setString("name","%"+name+"%");
+            productList = query.list();
         } finally {
             if (session != null) {
                 session.close();

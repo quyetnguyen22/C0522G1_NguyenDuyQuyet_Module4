@@ -90,7 +90,7 @@ public class MusicRepository implements IMusicRepository {
         try {
             session = ConnectionUtil.sessionFactory.openSession();
             transaction = session.beginTransaction();
-            session.remove(id);
+            session.createQuery("delete from Music where id=:id").setParameter("id",id).getSingleResult();
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
