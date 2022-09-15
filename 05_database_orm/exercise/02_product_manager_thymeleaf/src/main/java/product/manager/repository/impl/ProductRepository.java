@@ -88,7 +88,7 @@ public class ProductRepository implements IProductRepository {
         Session session = null;
         try {
             session = ConnectionUtil.sessionFactory.openSession();
-            session.createQuery("delete FROM Product where id=:id").setParameter("id", id).getSingleResult();
+            session.remove(id);
         } finally {
             if (session != null) {
                 session.close();
