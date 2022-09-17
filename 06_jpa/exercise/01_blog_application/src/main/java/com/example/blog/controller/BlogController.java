@@ -16,7 +16,7 @@ public class BlogController {
     private IBlogService blogService;
 
     @GetMapping("/blogList")
-    public String getBlogList(Model model) {
+    public String showBlogList(Model model) {
         model.addAttribute("list",blogService.showBlogList());
         return "list";
     }

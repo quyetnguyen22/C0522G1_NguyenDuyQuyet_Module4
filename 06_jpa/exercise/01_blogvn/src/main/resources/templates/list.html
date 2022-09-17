@@ -9,57 +9,58 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
 </head>
 <body>
-<h2>error</h2>
-<!--<div class="container">-->
-<!--    <h3 class="text-center">Product</h3>-->
-<!--    <form action="/searchProduct">-->
-<!--        <div class="row">-->
-<!--            <div class="row col-2">-->
-<!--                <a href="/add" class="btn btn-primary text-decoration-none">Write new blog</a>-->
-<!--            </div>-->
-<!--            <div class="input-group w-25">-->
-<!--                <input type="text" name="input" class="form-control form-control-sm" placeholder="Input name"-->
-<!--                       aria-label="Recipient's username" aria-describedby="button-addon2">-->
-<!--                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
+<div class="container">
+    <h3 class="text-center">Blog</h3>
+    <form action="/searchProduct">
+        <div class="row">
+            <div class="row col-2">
+                <a href="/formAdd" class="btn btn-primary text-decoration-none">Write new blog</a>
+            </div>
+            <div class="input-group w-25">
+                <input type="text" name="input" class="form-control form-control-sm" placeholder="Input name"
+                       aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            </div>
+        </div>
+    </form>
+    <h6 class="text-center" style="color: blue" th:text="${msgAdd}"></h6>
+    <h6 class="text-center" style="color: blue" th:text="${msgEdit}"></h6>
+    <h6 class="text-center" style="color: blue" th:text="${msgDelete}"></h6>
+    <table class="table table-striped" id="productTable">
+        <thead>
+        <tr>
+            <th>Series</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Content</th>
+            <th>Delete</th>
+            <th>View</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blog,series : ${list}">
+            <td th:text="${series.count}"></td>
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.author}"></td>
+            <td th:text="${blog.date}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/formEdit/__${blog.id}__}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/deleteBlog/__${blog.id}__}">Delete</a>
+                <!--            onclick="idDelete('${employee.getId()}', '${employee.getEmployeeName()}')"-->
+                <!--            class="text-white btn btn-danger btn-sm" data-bs-toggle="modal"-->
+                <!--            data-bs-target="#deleteModal"-->
+            </td>
+            <td>
+                <a class="btn btn-warning" th:href="@{/viewBlog/__${blog.id}__}">View</a>
+            </td>
 
-<!--    <h6 class="text-center" style="color: blue" th:text="${msgEdit}"></h6>-->
-<!--    <h6 class="text-center" style="color: blue" th:text="${msgDelete}"></h6>-->
-<!--    <table class="table table-striped" id="productTable">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Series</th>-->
-<!--            <th>Title</th>-->
-<!--            <th>Author</th>-->
-<!--            <th>Date</th>-->
-<!--            <th>Content</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="blog,series : ${list}">-->
-<!--            <td th:text="${series.count}"></td>-->
-<!--            <td th:text="${blog.title}"></td>-->
-<!--            <td th:text="${blog.author}"></td>-->
-<!--            <td th:text="${blog.date}"></td>-->
-<!--            <td>-->
-<!--                <a class="btn btn-primary" th:href="@{/formEdit/__${blog.id}__}">Edit</a>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <a class="btn btn-danger" th:href="@{/delete/__${blog.id}__}">Delete</a>-->
-<!--                &lt;!&ndash;            onclick="idDelete('${employee.getId()}', '${employee.getEmployeeName()}')"&ndash;&gt;-->
-<!--                &lt;!&ndash;            class="text-white btn btn-danger btn-sm" data-bs-toggle="modal"&ndash;&gt;-->
-<!--                &lt;!&ndash;            data-bs-target="#deleteModal"&ndash;&gt;-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <a class="btn btn-warning" th:href="@{/search/__${blog.id}__}">View</a>-->
-<!--            </td>-->
-
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 
 <!--<form>-->
