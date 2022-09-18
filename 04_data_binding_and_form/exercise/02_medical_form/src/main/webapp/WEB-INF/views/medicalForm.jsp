@@ -20,7 +20,7 @@
     <form:input path="fullName" id="name"/>  <br>
     <form:errors path="fullName" cssClass="error"/>
     <label for="birthday">Năm sinh</label> <br>
-    <form:input path="dateOfBirth" id="birthday"/>
+    <form:input type="?date?" path="dateOfBirth" id="birthday"/>
     <form:errors path="dateOfBirth" cssClass="error"/>
     <label for="gender">Gới tính</label>
     <form:select path="gender" items="${gender}"/>
@@ -39,10 +39,10 @@
     <label for="seat">Số ghế</label> <br>
     <form:input path="seatNumber" id="seat"/> <br>
     <label for="begin">Ngày khởi hành</label> <br>
-    <form:input path="beginDate" id="begin"/> <br>
+    <form:input type="?date?" path="beginDate" id="begin"/> <br>
     <form:errors path="beginDate" cssClass="error"/>
     <label for="end">Ngày kết thúc</label> <br>
-    <form:input path="finishDate" id="end"/> <br>
+    <form:input type="?date?" path="finishDate" id="end"/> <br>
     <form:errors path="finishDate" cssClass="error"/>
     <label for="city">Trong vòng 14 ngày qua anh/ chị đã đi đến tỉnh thành phố nào?</label> <br>
     <form:input path="stayedCity" id="city"/> <br>
