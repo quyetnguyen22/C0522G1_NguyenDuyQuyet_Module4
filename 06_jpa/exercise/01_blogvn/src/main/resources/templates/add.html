@@ -22,6 +22,17 @@
             <label for="inputName" class="form-label">Title:</label>
             <input type="text" th:field="*{title}" class="form-control" id="inputName"/>
         </div>
+
+        <div class="col-12">
+            <label class="form-label" for="inputCategory">Category:</label>
+            <input type="text" th:field="*{category.categoryName}" class="form-control" id="inputCategory"/>
+<!--            <select th:field="*{category}" class="form-control">-->
+<!--                <option-->
+<!--                        th:each="item : ${categoryList}" th:text="${item.categoryName}" th:value="${item.id}">-->
+<!--                </option>-->
+            </select>
+        </div>
+
         <div class="col-12">
             <label for="inputPrice" class="form-label">Author:</label>
             <input type="text" th:field="*{author}" class="form-control" id="inputPrice"/>
@@ -39,7 +50,7 @@
 
         <div class="col-12 mt-3 text-center">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="/blogList" class="btn btn-secondary mx-3 text-white text-decoration-none">Cancel</a>
+            <a href="/listPage" class="btn btn-secondary mx-3 text-white text-decoration-none">Cancel</a>
         </div>
     </form>
 </div>

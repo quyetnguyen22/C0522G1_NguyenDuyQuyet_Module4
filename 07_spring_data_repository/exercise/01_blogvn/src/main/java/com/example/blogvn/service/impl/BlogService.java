@@ -4,9 +4,9 @@ import com.example.blogvn.model.Blog;
 import com.example.blogvn.repository.IBlogRepository;
 import com.example.blogvn.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BlogService implements IBlogService {
@@ -19,15 +19,9 @@ public class BlogService implements IBlogService {
         blogRepository.save(blog);
     }
 
-
     @Override
-    public Page<Blog> showBlogByCategory(Pageable pageable, int id) {
-        return blogRepository.findBlogByCategoryId(pageable, id);
-    }
-
-    @Override
-    public Page<Blog> showBlogList(Pageable pageable) {
-        return blogRepository.findAll(pageable);
+    public List<Blog> showBlogList() {
+        return blogRepository.findAll();
     }
 
     @Override
@@ -43,10 +37,5 @@ public class BlogService implements IBlogService {
     @Override
     public void deleteBlog(int id) {
         blogRepository.deleteById(id);
-    }
-
-    @Override
-    public Page<Blog> searchBlog(String name, Pageable pageable) {
-        return blogRepository.findBlogByName(name, pageable);
     }
 }
