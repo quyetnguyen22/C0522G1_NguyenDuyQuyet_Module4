@@ -14,7 +14,7 @@ public class Blog {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Category", referencedColumnName = "id")
     private Category category;
 
