@@ -18,4 +18,10 @@ public class CategoryService implements ICategoryService {
     public List<Category> categoryList() {
         return categoryRepository.findAll();
     }
+
+    @Override
+    public Category addNewCategory(Category category) {
+       return categoryRepository.save(category);
+    }
+
 }

@@ -5,5 +5,7 @@ import com.example.blogvn.model.Category;
 import java.util.List;
 
 public interface ICategoryService {
-List<Category> categoryList();
+    List<Category> categoryList();
+
+    Category addNewCategory(Category category);
 }

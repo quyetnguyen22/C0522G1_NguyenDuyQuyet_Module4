@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,6 +11,8 @@
 
 <div th:insert="~{/header::common}"></div>
 <div class="container">
+    <h1 class="text-center">Category List</h1>
+    <h5 class="text-center" style="color: blue" th:text="${msgAddCa}"></h5>
     <table class="table table-striped" id="productTable">
         <tr>
             <th>Series</th>

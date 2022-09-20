@@ -1,6 +1,7 @@
 package com.example.blogvn.controller;
 
 import com.example.blogvn.model.Blog;
+import com.example.blogvn.model.Category;
 import com.example.blogvn.service.IBlogService;
 import com.example.blogvn.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,19 @@ public class BlogController {
        return new ModelAndView("category", "categoryList", categoryService.categoryList());
     }
 
+    @GetMapping("/addCategory")
+    public String addNewCategory(Model model) {
+        model.addAttribute("category", new Category());
+        return "addCategory";
+    }
+
+    @GetMapping("/saveCategory")
+    public String saveCategory(@ModelAttribute Category category,RedirectAttributes attributes) {
+        Category category1 = categoryService.addNewCategory(category);
+        attributes.addFlashAttribute("msgAddCa", "Add " +
+                category1.getCategoryName() + " successfully");
+        return "redirect:/category";
+    }
 
     @GetMapping("/listPage")
     public String showBlogPage(@PageableDefault(size = 2, sort = "date",
