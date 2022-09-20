@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.websocket.server.PathParam;
+
 @Controller
 public class BlogController {
 
@@ -50,7 +52,7 @@ public class BlogController {
     @GetMapping("/formAdd")
     public String getFormAdd(Model model) {
         model.addAttribute("blog", new Blog());
-//        model.addAttribute("categoryList", categoryService.categoryList());
+        model.addAttribute("categoryList", categoryService.categoryList());
         return "add";
     }
 
@@ -89,8 +91,10 @@ public class BlogController {
     }
 
     @GetMapping("/searchBlog")
-    public ModelAndView searchBlog(@PageableDefault(size = 2, sort = "date",
-            direction = Sort.Direction.DESC) Pageable pageable,@RequestParam String input) {
-        return new ModelAndView("list", "list", blogService.searchBlog(input, pageable));
+    public String searchBlog(@PageableDefault(size = 2, sort = "date",
+            direction = Sort.Direction.DESC) Pageable pageable,@RequestParam String input, Model model) {
+        model.addAttribute("list", blogService.searchBlog(input, pageable));
+        model.addAttribute("search", input);
+        return "list";
     }
 }
