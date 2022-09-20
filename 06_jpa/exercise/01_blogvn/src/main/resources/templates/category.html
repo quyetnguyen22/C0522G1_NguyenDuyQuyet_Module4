@@ -17,12 +17,19 @@
         <tr>
             <th>Series</th>
             <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
             <th>View</th>
         </tr>
         <tr th:each="category,series : ${categoryList}">
             <td th:text="${series.count}"></td>
             <td th:text="${category.categoryName}"></td>
-
+            <td>
+                <a class="btn btn-primary" th:href="@{/editCategory/__${category.id}__}">Edit</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/deleteCategory/__${category.id}__}">Delete</a>
+            </td>
             <td>
                 <a class="btn btn-success" th:href="@{/listPage/__${category.id}__}">View</a>
             </td>

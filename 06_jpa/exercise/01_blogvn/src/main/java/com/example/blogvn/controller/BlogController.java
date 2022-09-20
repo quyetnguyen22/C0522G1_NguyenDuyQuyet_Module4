@@ -31,24 +31,7 @@ public class BlogController {
         return "header";
     }
 
-    @GetMapping("/category")
-    public ModelAndView categoryList() {
-       return new ModelAndView("category", "categoryList", categoryService.categoryList());
-    }
 
-    @GetMapping("/addCategory")
-    public String addNewCategory(Model model) {
-        model.addAttribute("category", new Category());
-        return "addCategory";
-    }
-
-    @GetMapping("/saveCategory")
-    public String saveCategory(@ModelAttribute Category category,RedirectAttributes attributes) {
-        Category category1 = categoryService.addNewCategory(category);
-        attributes.addFlashAttribute("msgAddCa", "Add " +
-                category1.getCategoryName() + " successfully");
-        return "redirect:/category";
-    }
 
     @GetMapping("/listPage")
     public String showBlogPage(@PageableDefault(size = 2, sort = "date",
