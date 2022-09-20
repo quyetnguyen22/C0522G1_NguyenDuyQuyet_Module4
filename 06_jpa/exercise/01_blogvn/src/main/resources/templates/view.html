@@ -7,6 +7,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<div th:insert="~{/header::common}"></div>
 <a href="/listPage" type="submit" class="btn btn-primary text-decoration-none">Back</a>
 <form th:object="${blog}">
     <h3 class="text-center" th:text="*{title}"></h3>
