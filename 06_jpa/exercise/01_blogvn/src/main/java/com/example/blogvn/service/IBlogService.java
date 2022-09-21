@@ -1,5 +1,6 @@
 package com.example.blogvn.service;
 
+import com.example.blogvn.dto.BlogDto;
 import com.example.blogvn.model.Blog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,5 +23,6 @@ public interface IBlogService {
     //    Xoá một blog
     void deleteBlog(int id);
 
-//    Page<Blog> searchBlog(String name, Pageable pageable);
+    //    Page<Blog> searchBlog(String name, Pageable pageable);
+    Page<BlogDto> findBlogDto(Pageable pageable);
 }

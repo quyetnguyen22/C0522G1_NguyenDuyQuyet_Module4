@@ -90,6 +90,12 @@ public class BlogController {
         return "redirect:/listPage";
     }
 
+    @GetMapping("/listDto")
+    public String showBlogPage(@PageableDefault(size = 2) Pageable pageable, Model model) {
+        model.addAttribute("list", blogService.findBlogDto(pageable));
+        return "listDto";
+    }
+
 //    @GetMapping("/searchBlog")
 //    public String searchBlog(@PageableDefault(size = 2, sort = "date",
 //            direction = Sort.Direction.DESC) Pageable pageable,@RequestParam(value = "input", defaultValue = "") String input, Model model) {

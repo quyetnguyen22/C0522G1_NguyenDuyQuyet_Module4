@@ -1,5 +1,6 @@
 package com.example.blogvn.service.impl;
 
+import com.example.blogvn.dto.BlogDto;
 import com.example.blogvn.model.Blog;
 import com.example.blogvn.repository.IBlogRepository;
 import com.example.blogvn.service.IBlogService;
@@ -45,8 +46,14 @@ public class BlogService implements IBlogService {
         blogRepository.deleteById(id);
     }
 
-//    @Override
+    @Override
+    public Page<BlogDto> findBlogDto(Pageable pageable) {
+        return blogRepository.findBlogDto(pageable);
+    }
+
+    //    @Override
 //    public Page<Blog> searchBlog(String name, Pageable pageable) {
 //        return blogRepository.findBlogByName(name, pageable);
 //    }
+
 }

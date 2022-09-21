@@ -1,5 +1,7 @@
 package com.example.blogvn.model;
 
+import com.example.blogvn.dto.BlogDto;
+
 import javax.persistence.*;
 
 @Entity
