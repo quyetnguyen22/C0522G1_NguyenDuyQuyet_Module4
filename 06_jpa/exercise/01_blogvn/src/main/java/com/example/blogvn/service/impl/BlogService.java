@@ -26,8 +26,8 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public Page<Blog> showBlogList(Pageable pageable) {
-        return blogRepository.findAll(pageable);
+    public Page<Blog> showBlogList(Pageable pageable, String input) {
+        return blogRepository.findBlogByName(pageable, input);
     }
 
     @Override
@@ -45,8 +45,8 @@ public class BlogService implements IBlogService {
         blogRepository.deleteById(id);
     }
 
-    @Override
-    public Page<Blog> searchBlog(String name, Pageable pageable) {
-        return blogRepository.findBlogByName(name, pageable);
-    }
+//    @Override
+//    public Page<Blog> searchBlog(String name, Pageable pageable) {
+//        return blogRepository.findBlogByName(name, pageable);
+//    }
 }

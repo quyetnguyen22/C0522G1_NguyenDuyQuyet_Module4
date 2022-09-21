@@ -1,7 +1,7 @@
 package com.register_form.controller;
 
 import com.register_form.model.User;
-import com.register_form.model.UserDto;
+import com.register_form.dto.UserDto;
 import com.register_form.service.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -7,14 +7,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
-
 public interface IBlogRepository extends JpaRepository<Blog,Integer> {
     Blog findById(int id);
 
-    @Query(value = "select * from blog where title like %:elementSearch%", nativeQuery = true)
-    Page<Blog> findBlogByName(@Param("elementSearch") String name, Pageable pageable);
+    @Query(value = "select * from Blog where title like %:elementSearch%", nativeQuery = true)
+    Page<Blog> findBlogByName(Pageable pageable, @Param("elementSearch") String name);
 
     @Query(value = "select * from Blog where category = :categoryId",nativeQuery = true)
     Page<Blog> findBlogByCategoryId(Pageable pageable, @Param("categoryId") int id);
+
 }

@@ -11,6 +11,7 @@ public class Blog {
     private String title;
     private String author;
     private String date;
+
     @Column(columnDefinition = "TEXT")
     private String content;
 

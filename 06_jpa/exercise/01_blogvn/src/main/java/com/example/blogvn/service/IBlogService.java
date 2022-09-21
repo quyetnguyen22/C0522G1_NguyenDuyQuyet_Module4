@@ -11,7 +11,7 @@ public interface IBlogService {
     //    Hiển thị danh sách tóm tắt các blog
     Page<Blog> showBlogByCategory(Pageable pageable, int id);
 
-    Page<Blog> showBlogList(Pageable pageable);
+    Page<Blog> showBlogList(Pageable pageable, String input);
 
     //    Cập nhật nội dung một blog
     void editBlog(Blog blog);
@@ -22,5 +22,5 @@ public interface IBlogService {
     //    Xoá một blog
     void deleteBlog(int id);
 
-    Page<Blog> searchBlog(String name, Pageable pageable);
+//    Page<Blog> searchBlog(String name, Pageable pageable);
 }

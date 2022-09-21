@@ -1,7 +1,6 @@
 package com.example.blogvn.controller;
 
 import com.example.blogvn.model.Blog;
-import com.example.blogvn.model.Category;
 import com.example.blogvn.service.IBlogService;
 import com.example.blogvn.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.websocket.server.PathParam;
 
 @Controller
 public class BlogController {
@@ -36,9 +33,10 @@ public class BlogController {
 
 
     @GetMapping("/listPage")
-    public String showBlogPage(@PageableDefault(size = 2, sort = "date",
+    public String showBlogPage(@RequestParam(value = "input", defaultValue = "" ) String input, @PageableDefault(size = 2, sort = "date",
             direction = Sort.Direction.DESC) Pageable pageable, Model model) {
-        model.addAttribute("list", blogService.showBlogList(pageable));
+        model.addAttribute("list", blogService.showBlogList(pageable, input));
+        model.addAttribute("search", input);
         return "list";
     }
 
@@ -90,11 +88,11 @@ public class BlogController {
         return "redirect:/listPage";
     }
 
-    @GetMapping("/searchBlog")
-    public String searchBlog(@PageableDefault(size = 2, sort = "date",
-            direction = Sort.Direction.DESC) Pageable pageable,@RequestParam String input, Model model) {
-        model.addAttribute("list", blogService.searchBlog(input, pageable));
-        model.addAttribute("search", input);
-        return "list";
-    }
+//    @GetMapping("/searchBlog")
+//    public String searchBlog(@PageableDefault(size = 2, sort = "date",
+//            direction = Sort.Direction.DESC) Pageable pageable,@RequestParam(value = "input", defaultValue = "") String input, Model model) {
+//        model.addAttribute("list", blogService.searchBlog(input, pageable));
+//        model.addAttribute("search", input);
+//        return "list";
+//    }
 }

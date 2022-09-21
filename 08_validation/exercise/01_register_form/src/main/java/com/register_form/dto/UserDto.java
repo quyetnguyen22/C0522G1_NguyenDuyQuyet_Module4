@@ -1,25 +1,29 @@
-package com.register_form.model;
+package com.register_form.dto;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class UserDto implements Validator {
     private Integer id;
-    @Size(min = 5, max = 45,message = "Please input from 5-45 letters")
+
+    @Size(min = 5, max = 45, message = "Please input from 5-45 letters")
     private String firstName;
-    @Size(min = 5, max = 45,message = "Please input from 5-45 letters")
+
+    @Size(min = 5, max = 45, message = "Please input from 5-45 letters")
     private String lastName;
-    //    Phonenumber đúng quy tắc của sđt
-//    @NotBlank(message = "Can not be empty")
+
+    @NotBlank
     private String phoneNumber;
-    @Min(value = 18,message = "Age must be equal or greater than 18")
+
+    @Min(value = 18, message = "Age must be equal or greater than 18")
     private String age;
-    @Pattern(regexp = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]{2,}(\\.[A-Za-z0-9]{2,}){1,2}$",
-            message = "Email is not right format.")
+
+    @Email(message = "Email is not right format.")
 //    @NotBlank(message = "Can not be empty")
     private String email;
 
@@ -82,8 +86,8 @@ public class UserDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserDto userDto = (UserDto) target;
-      if (!userDto.phoneNumber.matches("0[0-9]{9}")){
-          errors.rejectValue("phoneNumber", "phoneNumber.regex", "Phone number is not right format");
-      }
+        if (!userDto.phoneNumber.matches("0[0-9]{9}")) {
+            errors.rejectValue("phoneNumber", "phoneNumber.regex", "Phone number is not right format");
+        }
     }
 }
