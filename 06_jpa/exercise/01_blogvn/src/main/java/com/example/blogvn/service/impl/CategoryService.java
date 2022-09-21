@@ -14,14 +14,19 @@ public class CategoryService implements ICategoryService {
     @Autowired
     private ICategoryRepository categoryRepository;
 
-    @Override
+    //    @Override
+//    public List<Category> categoryList() {
+//        return categoryRepository.findAll();
+//    }
+
+    @Autowired
     public List<Category> categoryList() {
-        return categoryRepository.findAll();
+        return categoryRepository.showAll();
     }
 
     @Override
     public Category addNewCategory(Category category) {
-       return categoryRepository.save(category);
+        return categoryRepository.save(category);
     }
 
     @Override
@@ -29,9 +34,14 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.findById(id);
     }
 
+//    @Override
+//    public void deleteCategory(int id) {
+//        categoryRepository.deleteById(id);
+//    }
+
     @Override
     public void deleteCategory(int id) {
-        categoryRepository.deleteById(id);
+        categoryRepository.deleteCategory(id);
     }
 
     @Override

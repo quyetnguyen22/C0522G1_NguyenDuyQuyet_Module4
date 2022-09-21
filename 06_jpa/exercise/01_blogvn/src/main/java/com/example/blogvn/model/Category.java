@@ -9,6 +9,8 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private int isDeleted = 0;
     private String categoryName;
 
     @OneToMany(mappedBy = "category")
@@ -17,9 +19,11 @@ public class Category {
     public Category() {
     }
 
-    public Category(Integer id, String categoryName) {
+    public Category(Integer id, int isDeleted, String categoryName, List<Blog> blog) {
         this.id = id;
+        this.isDeleted = isDeleted;
         this.categoryName = categoryName;
+        this.blog = blog;
     }
 
     public Integer getId() {
@@ -44,5 +48,13 @@ public class Category {
 
     public void setBlog(List<Blog> blog) {
         this.blog = blog;
+    }
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
     }
 }
