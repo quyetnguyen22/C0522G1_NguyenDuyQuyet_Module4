@@ -17,8 +17,8 @@ public interface IBlogRepository extends JpaRepository<Blog,Integer> {
     @Query(value = "select * from Blog where category = :categoryId",nativeQuery = true)
     Page<Blog> findBlogByCategoryId(Pageable pageable, @Param("categoryId") int id);
 
-    @Query(value = "select b.title, c.category_name as categoryName from blog as b join category as c on b.id=c.id", nativeQuery = true,
-            countQuery = "select count(*) from (select b.title, c.category_name as categoryName from blog as b join category as c on b.id=c.id) temp")
+    @Query(value = "select b.title, c.category_name as categoryName from blog as b join category as c on b.category=c.id", nativeQuery = true,
+            countQuery = "select count(*) from (select b.title, c.category_name as categoryName from blog as b join category as c on b.category=c.id) temp")
     Page<BlogDto> findBlogDto(Pageable pageable);
 
 }

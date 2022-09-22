@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+<form th:object="${book}">
+    <table class="container w-25" border="solid 1px">
+        <tr>
+            <td colspan="2" th:text="*{bookName}"></td>
+        </tr>
+        <tr>
+            <td>Book's Type:</td>
+            <td th:text="*{bookType}"></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td th:text="*{quantity}"></td>
+        </tr>
+        <tr>
+            <td>Code Of Book:</td>
+            <td th:text="*{bookCode}"></td>
+        </tr>
+        <tr>
+            <td colspan="2" th:text="*{detail}"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <a th:href="@{/borrow/__${id}__}" class="btn btn-primary">Borrow</a>
+                <a href="/bookList" class="btn btn-secondary">Cancel</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+</html>
