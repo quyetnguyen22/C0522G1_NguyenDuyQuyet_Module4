@@ -79,7 +79,13 @@ public class FlowerController {
     @GetMapping("delete/{id}")
     public String deleteProduct(@PathVariable int id,
                                 @SessionAttribute("cart") CartDto cart) {
-        cart.deleteProduct(id);
+        Optional<Flower> flower = flowerService.showFlowerById(id);
+        if (flower.isPresent()) {
+            FlowerDto flowerDto = new FlowerDto();
+            BeanUtils.copyProperties(flower.get(), flowerDto);
+            cart.deleteProduct(flowerDto);
+        }
+
         return "redirect:/cart";
     }
 

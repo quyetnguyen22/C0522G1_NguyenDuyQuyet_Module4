@@ -28,19 +28,22 @@
                     <td>
                         <img th:src="@{${product.key.image}}" style="width: 70px; height: auto">
                     </td>
-                    <td th:text="${product.key.price}"></td>
+                    <td th:text="${product.key.price}*${product.value}"></td>
                     <td th:text="${product.value}">
                     </td>
                     <td>
                         <a class="text-decoration-none btn btn-success" th:href="@{/shop/decrease/__${product.key.id}__}">-</a>
                         <a class="text-decoration-none btn btn-success" th:href="@{/shop/add/__${product.key.id}__}">+</a>
+                        <a class="text-decoration-none btn btn-danger" th:href="@{/shop/delete/__${product.key.id}__}">--</a>
                     </td>
 
                 </tr>
                 </tbody>
             </table>
+<!--            <span></span>-->
             <div class="alert alert-warning" role="alert" th:if="${cart == null || cart.getCarts().size() == 0}">
                 cart empty
+                <a href="/shop">back</a>
             </div>
         </div>
     </div>

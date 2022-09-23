@@ -37,8 +37,8 @@ public class CartDto {
 //        }
     }
 
-    public void deleteProduct(int id) {
-            carts.remove(id);
+    public void deleteProduct(FlowerDto flowerDto) {
+            carts.remove(flowerDto);
     }
 
     public long payBill() {
