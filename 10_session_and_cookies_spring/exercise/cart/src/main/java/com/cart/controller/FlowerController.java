@@ -32,7 +32,8 @@ public class FlowerController {
     public ModelAndView showListFlowers( Model model,
                                          @CookieValue(value = "productId", defaultValue = "-1") int productId) {
         if (productId != -1) {
-            model.addAttribute("historyProduct", flowerService.showFlowerById(productId).get());
+            model.addAttribute("historyProduct",
+                    flowerService.showFlowerById(productId).get());
         }
         return new ModelAndView("product/flowerList", "flowers", flowerService.showAllFlower());
     }
@@ -41,15 +42,16 @@ public class FlowerController {
     public ModelAndView showDetail(@PathVariable int id, HttpServletResponse response) {
         /* create cookie*/
         Cookie cookie = new Cookie("productId", id + "");
-        cookie.setMaxAge(60 * 60 * 24 * 2); // lifetime is 2 days
+        cookie.setMaxAge(24 * 60 * 60); // lifetime is 1 days
         cookie.setPath("/"); // global cookie
         response.addCookie(cookie);
 
-        return new ModelAndView("product/flowerDetail", "flower", flowerService.showFlowerById(id));
+        return new ModelAndView("product/flowerDetail",
+                "flower", flowerService.showFlowerById(id).get());
     }
 
     @GetMapping("/add/{id}")
-    public String addToCart(@PathVariable int id,
+    public String addToCart(@PathVariable int id, Model model,
 //                            @ModelAttribute("cart") CartDto cartDto, // get SessionAttribute
                             @SessionAttribute("cart") CartDto cart) {
 
@@ -58,12 +60,14 @@ public class FlowerController {
             FlowerDto flowerDto = new FlowerDto();
             BeanUtils.copyProperties(flower.get(), flowerDto);
             cart.addToCart(flowerDto);
+//            model.addAttribute("payment", cart.payBill());
         }
         return "redirect:/cart";
+//        return "cart/cartList";
     }
 
     @GetMapping("/decrease/{id}")
-    public String decreaseProduct(@PathVariable int id,
+    public String decreaseProduct(@PathVariable int id, Model model,
                                   @SessionAttribute("cart") CartDto cart) {
 
         Optional<Flower> flower = flowerService.showFlowerById(id);
@@ -71,9 +75,10 @@ public class FlowerController {
             FlowerDto flowerDto = new FlowerDto();
             BeanUtils.copyProperties(flower.get(), flowerDto);
             cart.decreaseProduct(flowerDto);
+//            model.addAttribute("payment", cart.payBill());
         }
-
         return "redirect:/cart";
+//        return "cart/cartList";
     }
 
     @GetMapping("delete/{id}")

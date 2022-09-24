@@ -42,6 +42,10 @@ public class CartDto {
     }
 
     public long payBill() {
-        return 0;
+        long totalBill = 0;
+        for (Map.Entry<FlowerDto, Integer> payment : carts.entrySet()) {
+            totalBill += payment.getKey().getPrice() * payment.getValue();
+        }
+        return totalBill;
     }
 }
