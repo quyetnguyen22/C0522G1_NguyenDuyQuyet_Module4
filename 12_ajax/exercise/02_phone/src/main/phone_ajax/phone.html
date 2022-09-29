@@ -130,11 +130,17 @@
             let model = $("#model").val();
             let producer = $("#producer").val();
             let price = $("#price").val();
+            let newPhone= {
+                model: model,
+                producer: producer,
+                price: price
+            };
             $.ajax({
                 url: "http://localhost:8080/phone",
                 type: "POST",
                 contentType: 'application/json; chaset=utf-8',
-                data: JSON.stringify({'model': model, 'producer': producer, 'price': price}),
+                data: JSON.stringify(newPhone),
+                // data: JSON.stringify({'model': model, 'producer': producer, 'price': price}),
                 success: function () {
                     $('#addModal').modal('hide');
                     $("tbody").empty();
