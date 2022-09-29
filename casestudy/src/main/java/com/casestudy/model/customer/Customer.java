@@ -1,113 +1,135 @@
 package com.casestudy.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+
+@Entity
 public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String customerName;
-    private String customerBirthday;
-    private String customerGender;
-    private String customerIdNum;
-    private String customerPhone;
-    private String customerEmail;
-    private String customerAddress;
-    private int customerRankId;
+
+    private String name;
+    private String birthday;
+    private String gender;
+    private String idNum;
+    private String phone;
+    private String email;
+    private String address;
+    private boolean isDeleted = false;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "rank_id", referencedColumnName = "id")
+    @JsonManagedReference
+   private CustomerRank rank;
 
     public Customer() {
     }
 
-    public Customer(String customerName, String customerBirthday, String customerGender, String customerIdNum,
-                    String customerPhone, String customerEmail, String customerAddress, int customerRankId) {
-        this.customerName = customerName;
-        this.customerBirthday = customerBirthday;
-        this.customerGender = customerGender;
-        this.customerIdNum = customerIdNum;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-        this.customerRankId = customerRankId;
+    public Customer(String name, String birthday, String gender, String idNum, String phone, String email,
+                     String address, CustomerRank rank) {
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idNum = idNum;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.rank = rank;
     }
 
-    public Customer(int id, String customerName, String customerBirthday, String customerGender, String customerIdNum,
-                    String customerPhone, String customerEmail, String customerAddress, int customerRankId) {
+    public Customer(Integer id, String name, String birthday, String gender, String idNum, String phone, String email,
+                     String address, CustomerRank rank) {
         this.id = id;
-        this.customerName = customerName;
-        this.customerBirthday = customerBirthday;
-        this.customerGender = customerGender;
-        this.customerIdNum = customerIdNum;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-        this.customerRankId = customerRankId;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idNum = idNum;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.rank = rank;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getName() {
+        return name;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCustomerBirthday() {
-        return customerBirthday;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setCustomerBirthday(String customerBirthday) {
-        this.customerBirthday = customerBirthday;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public String getCustomerGender() {
-        return customerGender;
+    public String getGender() {
+        return gender;
     }
 
-    public void setCustomerGender(String customerGender) {
-        this.customerGender = customerGender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getCustomerIdNum() {
-        return customerIdNum;
+    public String getIdNum() {
+        return idNum;
     }
 
-    public void setCustomerIdNum(String customerIdNum) {
-        this.customerIdNum = customerIdNum;
+    public void setIdNum(String idNum) {
+        this.idNum = idNum;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getCustomerRankId() {
-        return customerRankId;
+    public CustomerRank getRank() {
+        return rank;
     }
 
-    public void setCustomerRankId(int customerRankId) {
-        this.customerRankId = customerRankId;
+    public void setRank(CustomerRank rank) {
+        this.rank = rank;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

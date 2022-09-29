@@ -1,23 +1,37 @@
 package com.casestudy.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class CustomerRank {
-    private Integer rankId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String rankName;
+
+    @OneToMany(mappedBy = "rank")
+    @JsonBackReference
+    private Set<Customer> customer;
 
     public CustomerRank() {
     }
 
-    public CustomerRank(int rankId, String rankName) {
-        this.rankId = rankId;
+    public CustomerRank(Integer id, String rankName, Set<Customer> customer) {
+        this.id = id;
         this.rankName = rankName;
+        this.customer = customer;
     }
 
-    public int getRankId() {
-        return rankId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRankId(int rankId) {
-        this.rankId = rankId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getRankName() {
@@ -26,5 +40,13 @@ public class CustomerRank {
 
     public void setRankName(String rankName) {
         this.rankName = rankName;
+    }
+
+    public Set<Customer> getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Set<Customer> customer) {
+        this.customer = customer;
     }
 }

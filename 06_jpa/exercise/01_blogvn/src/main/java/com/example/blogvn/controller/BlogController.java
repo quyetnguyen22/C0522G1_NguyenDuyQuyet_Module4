@@ -33,7 +33,7 @@ public class BlogController {
 
 
     @GetMapping("/listPage")
-    public String showBlogPage(@RequestParam(value = "input", defaultValue = "" ) String input,
+    public String showBlogPage(@RequestParam(value = "input", defaultValue = "") String input,
                                @PageableDefault(size = 2, sort = "date",
             direction = Sort.Direction.DESC) Pageable pageable, Model model) {
         model.addAttribute("list", blogService.showBlogList(pageable, input));

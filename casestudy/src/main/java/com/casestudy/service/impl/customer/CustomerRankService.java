@@ -4,10 +4,9 @@ import com.casestudy.model.customer.CustomerRank;
 import com.casestudy.repository.customer.ICustomerRankRepository;
 import com.casestudy.service.customer.ICustomerRankService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @Service
 public class CustomerRankService implements ICustomerRankService {
@@ -17,7 +16,7 @@ public class CustomerRankService implements ICustomerRankService {
 
 
     @Override
-    public Page<CustomerRank> showAllCustomerRank(Pageable pageable) {
-        return customerRankRepository.findAll(pageable);
+    public List<CustomerRank> showAllCustomerRank() {
+        return customerRankRepository.findAll();
     }
 }

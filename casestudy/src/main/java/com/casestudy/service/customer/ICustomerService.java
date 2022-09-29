@@ -4,10 +4,13 @@ import com.casestudy.model.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface ICustomerService {
-    Page<Customer> showAllCustomer(Pageable pageable);
+import java.util.Optional;
 
-    Customer searchById(int id);
+public interface ICustomerService {
+
+    Page<Customer> showAllCustomer(Pageable pageable, String search);
+
+    Optional<Customer> findById(int id);
 
     Customer editCustomer(Customer customer);
 
