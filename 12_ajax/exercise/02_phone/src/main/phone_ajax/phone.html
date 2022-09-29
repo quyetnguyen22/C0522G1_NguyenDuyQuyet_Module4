@@ -10,7 +10,8 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,7 +20,8 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         Phone
                     </a>
                     <ul class="dropdown-menu">
@@ -28,13 +30,18 @@
                 </li>
             </ul>
             <form class="d-flex" role="search">
-                <input id="searchInput" class="form-control me-2" name="search" type="search" placeholder="Input Title" aria-label="Search">
+                <input id="searchInput" class="form-control me-2" name="search" type="search" placeholder="Input Title"
+                       aria-label="Search">
                 <button id="moreBtn" class="btn btn-outline-success" type="button">More</button>
             </form>
         </div>
     </div>
 </nav>
-<h3 class="text-center">Blog List</h3>
+<h3 class="text-center">Phone List</h3>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+    Add New Phone
+</button>
 <table class="table table-striped container" id="productTable">
     <thead>
     <tr>
@@ -42,6 +49,8 @@
         <th>Producer</th>
         <th>Model</th>
         <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -52,6 +61,38 @@
     </tr>
     </tbody>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container w-75">
+                    <div class="col-12">
+                        <label for="model" class="form-label">Model:</label>
+                        <input type="text" class="form-control" id="model"/>
+                    </div>
+                    <div class="col-12">
+                        <label for="producer" class="form-label">Producer:</label>
+                        <input type="text" class="form-control" id="producer"/>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="price" class="form-label">Price:</label>
+                        <input type="text" class="form-control" id="price"/>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addBtn">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -59,25 +100,47 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
     $(document).ready(function () {
-        // setInterval() /* chu ky lap
-        $("tbody").empty();
-        $.ajax({
-            url: "http://localhost:8080/phone",
-            type: "GET",
-            dataType: "json",
+        phoneList();
 
-            success: function (list) {
-                let tr = [];
-                for (let i = 0; i < list.length; i++) {
-                    tr.push("<tr>");
-                    tr.push("<td>" + list[i].id + "</td>");
-                    tr.push("<td>" + list[i].producer + "</td>");
-                    tr.push("<td>" + list[i].model + "</td>");
-                    tr.push("<td>" + list[i].price + "</td>");
+        function phoneList() {
+            // setInterval() /* chu ky lap
+            $("tbody").empty();
+            $.ajax({
+                url: "http://localhost:8080/phone",
+                type: "GET",
+                dataType: "json",
 
+                success: function (list) {
+                    let tr = [];
+                    for (let i = 0; i < list.length; i++) {
+                        tr.push("<tr>");
+                        tr.push("<td>" + list[i].id + "</td>");
+                        tr.push("<td>" + list[i].producer + "</td>");
+                        tr.push("<td>" + list[i].model + "</td>");
+                        tr.push("<td>" + list[i].price + "</td>");
+                        tr.push("</tr>");
+                    }
+                    $("table").append(tr.join(""));
                 }
-                $("table").append(tr.join(""));
-            }
+            })
+        }
+
+
+        $("#addBtn").click(function () {
+            let model = $("#model").val();
+            let producer = $("#producer").val();
+            let price = $("#price").val();
+            $.ajax({
+                url: "http://localhost:8080/phone",
+                type: "POST",
+                contentType: 'application/json; chaset=utf-8',
+                data: JSON.stringify({'model': model, 'producer': producer, 'price': price}),
+                success: function () {
+                    $('#addModal').modal('hide');
+                    $("tbody").empty();
+                    phoneList();
+                }
+            })
         })
     })
 </script>
