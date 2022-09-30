@@ -31,7 +31,7 @@ public class PhoneController {
     public ModelAndView getFormEdit(@PathVariable int id) {
         return new ModelAndView("list","phones",  phoneService.findById(id).get());
     }
-    @PatchMapping("/list")
+    @PatchMapping("/saveEditing")
     public ResponseEntity<Phone> updatePhone(@RequestBody Phone phone){
         return new ResponseEntity<>(phoneService.save(phone),HttpStatus.OK);
     }
@@ -41,6 +41,7 @@ public class PhoneController {
         Optional<Phone> phoneOptional = phoneService.findById(id);
         if (phoneOptional.isPresent()) {
             phoneService.remove(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
