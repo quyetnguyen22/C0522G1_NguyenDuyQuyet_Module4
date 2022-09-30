@@ -27,7 +27,7 @@ public class PhoneController {
     public ResponseEntity<Iterable<Phone>> getAllPhones() {
         return new ResponseEntity<>(phoneService.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/list/{id}")
+    @GetMapping("/edit/{id}")
     public ModelAndView getFormEdit(@PathVariable int id) {
         return new ModelAndView("list","phones",  phoneService.findById(id).get());
     }
@@ -36,13 +36,12 @@ public class PhoneController {
         return new ResponseEntity<>(phoneService.save(phone),HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Phone> deletePhone(@PathVariable int id) {
         Optional<Phone> phoneOptional = phoneService.findById(id);
-        if (!phoneOptional.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (phoneOptional.isPresent()) {
+            phoneService.remove(id);
         }
-        phoneService.remove(id);
-        return new ResponseEntity<>(phoneOptional.get(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
