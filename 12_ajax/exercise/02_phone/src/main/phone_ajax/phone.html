@@ -66,7 +66,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add new phone</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -98,7 +98,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                <h5 class="modal-title" id="modalLabel">Edit phone</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="edtBtn">Add</button>
+                    <button type="button" class="btn btn-primary" id="edtBtn">Save</button>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
                         tr.push("<td>" + list[i].producer + "</td>");
                         tr.push("<td>" + list[i].model + "</td>");
                         tr.push("<td>" + list[i].price + "</td>");
-                        tr.push("<td id='edit'>" + "<span hidden> + list[i].id + </span>" + "<a class='btn btn-sm btn-warning'>Edit</a>" + "</td>");
+                        tr.push("<td id='edit'>" + "<span hidden>" + list[i].id + "</span>" + "<a class='btn btn-sm btn-warning'>Edit</a>" + "</td>");
                         tr.push("<td id='delete'>" + "<span hidden>" + list[i].id + "</span>" + "<a class='btn btn-sm btn-danger'>Delete</a>" + "</td>");
                         tr.push("</tr>");
                     }
@@ -213,7 +213,8 @@
                     $("#editModel").val(phone.model);
                     $("#editProducer").val(phone.producer);
                     $("#editPrice").val(phone.price);
-                    $("#editModal").click();
+                    $("#editModal").modal('shown');
+                    // $("btn-warning").click();
                     // $("tbody").empty();
                     // phoneList();
                 }
