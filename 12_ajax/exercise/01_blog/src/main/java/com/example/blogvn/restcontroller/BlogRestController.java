@@ -30,17 +30,17 @@ public class BlogRestController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Blog>> getBlogByCategory(@PathVariable int id) {
-
-        List<Blog> blogListByCategory = blogService.showBlogByCategory(id);
-
-        if (blogListByCategory.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(blogListByCategory, HttpStatus.OK);
-        }
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<List<Blog>> getBlogByCategory(@PathVariable int id) {
+//
+//        List<Blog> blogListByCategory = blogService.showBlogByCategory(id);
+//
+//        if (blogListByCategory.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        } else {
+//            return new ResponseEntity<>(blogListByCategory, HttpStatus.OK);
+//        }
+//    }
 
     @GetMapping("blogDetail/{id}")
     public ResponseEntity<Blog> getBlogDetail(@PathVariable int id) {

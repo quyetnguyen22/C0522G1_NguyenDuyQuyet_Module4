@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -61,18 +61,18 @@
                     <i class="fas fa-address-card"></i>
                     Delete
                 </a>
-                <!-- Modal -->
+                <!-- Modal Delete -->
                 <div th:fragment="modal" class="modal fade" th:id="delete + ${customer.id}" tabindex="-1"
                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">You are about to delete:</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>You are about to delete:</p>
-                                <p style="color: red" th:text="${customer.name}"></p>
+                                <span class="ps-2">Customer: </span>
+                                <span style="color: red" th:text="${customer.name}"></span>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

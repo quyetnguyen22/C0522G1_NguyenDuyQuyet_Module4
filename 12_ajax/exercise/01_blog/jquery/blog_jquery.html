@@ -10,7 +10,8 @@
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Blog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,7 +20,8 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
                         Blog
                     </a>
                     <ul class="dropdown-menu">
@@ -28,7 +30,8 @@
                 </li>
             </ul>
             <form class="d-flex" role="search">
-                <input id="searchInput" class="form-control me-2" name="search" type="search" placeholder="Input Title" aria-label="Search">
+                <input id="searchInput" class="form-control me-2" name="search" type="search" placeholder="Input Title"
+                       aria-label="Search">
                 <button id="moreBtn" class="btn btn-outline-success" type="button">More</button>
             </form>
         </div>
@@ -61,86 +64,46 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
     $(document).ready(function () {
-            // setInterval() /* chu ky lap
-                $("tbody").empty();
-                $.ajax({
-                    url: "http://localhost:8080/api/blogList/v1",
-                    type: "GET",
-                    dataType: "json",
+        // setInterval() /* chu ky lap
+        let more = 3;
+        blog();
+        function blog(e) {
+            let search = $('#searchInput').val();
+            $("tbody").empty();
+            $.ajax({
+                url: "http://localhost:8080/api/blogList/v1?search=" + search +"&more=" + more,
+                type: "GET",
+                dataType: "json",
 
-                    success: function (list) {
-                        let tr = [];
-                        let j = 3;
-                        for (let i = 0; i < j; i++) {
-                            tr.push("<tr>");
-                            tr.push("<td>" + list[i].id + "</td>");
-                            tr.push("<td>" + list[i].title + "</td>");
-                            tr.push("<td>" + list[i].author + "</td>");
-                            tr.push("<td>" + list[i].date + "</td>");
-                            tr.push("<td>" + list[i].content + "</td>");
-                            tr.push("<td>" + list[i].category.categoryName + "</td>");
-                            tr.push("</tr>");
-                        }
-                        $("table").append(tr.join(""));
+                success: function (list) {
+                    let tr = [];
+                    for (let i = 0; i < list.length; i++) {
+                        tr.push("<tr>");
+                        tr.push("<td>" + list[i].id + "</td>");
+                        tr.push("<td>" + list[i].title + "</td>");
+                        tr.push("<td>" + list[i].author + "</td>");
+                        tr.push("<td>" + list[i].date + "</td>");
+                        tr.push("<td>" + list[i].content + "</td>");
+                        tr.push("<td>" + list[i].category.categoryName + "</td>");
+                        tr.push("</tr>");
                     }
-                })
-
-
-                $("#moreBtn").click(function () {
-
-                    $("tbody").empty();
-                    $.ajax({
-                        url: "http://localhost:8080/api/blogList/v1",
-                        type: "GET",
-                        dataType: "json",
-
-                        success: function (list) {
-                            let tr = [];
-                            let j = 3;
-                            j += 3;
-                            for (let i = 0; i < j; i++) {
-                                tr.push("<tr>");
-                                tr.push("<td>" + list[i].id + "</td>");
-                                tr.push("<td>" + list[i].title + "</td>");
-                                tr.push("<td>" + list[i].author + "</td>");
-                                tr.push("<td>" + list[i].date + "</td>");
-                                tr.push("<td>" + list[i].content + "</td>");
-                                tr.push("<td>" + list[i].category.categoryName + "</td>");
-                                tr.push("</tr>");
-                            }
-                            $("table").append(tr.join(""));
-                        }
-                    })
-
-                })
-
-
-        // setTimeout(function () {
-            $("#searchInput").keyup(function (){
-                let search = $('#searchInput').val();
-                $("tbody").empty();
-                $.ajax({
-                    url: "http://localhost:8080/api/blogList/v1?search=" + search,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (list) {
-                        let tr = [];
-                        for (let i = 0; i < list.length; i++) {
-                            tr.push("<tr>");
-                            tr.push("<td>" + list[i].id + "</td>");
-                            tr.push("<td>" + list[i].title + "</td>");
-                            tr.push("<td>" + list[i].author + "</td>");
-                            tr.push("<td>" + list[i].date + "</td>");
-                            tr.push("<td>" + list[i].content + "</td>");
-                            tr.push("<td>" + list[i].category.categoryName + "</td>");
-                            tr.push("</tr>");
-                        }
-                        $("table").append(tr.join(""));
-                    }
-                })
+                    $("table").append(tr.join(""));
+                }
             })
+        }
 
-        // }, 1000)
+
+        $("#moreBtn").click(function () {
+            more += 3;
+            blog(more);
+
+        })
+
+
+        $("#searchInput").keyup(function () {
+            blog();
+        })
+
     })
 </script>
 

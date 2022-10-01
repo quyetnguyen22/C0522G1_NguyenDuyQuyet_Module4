@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,7 +18,7 @@
 </div>
 
 <div class="container border border-primary w-50">
-    <form class="g-3" action="/customer/edit" method="post" th:object="${customer}">
+    <form class="g-3" action="/customer/edit" method="post" th:object="${customerDto}">
         <input hidden type="text" th:field="*{id}"/>
         <div class="col-12">
             <label for="inputName" class="form-label">Name:</label>

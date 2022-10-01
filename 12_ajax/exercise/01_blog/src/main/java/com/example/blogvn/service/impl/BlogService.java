@@ -14,10 +14,10 @@ public class BlogService implements IBlogService {
     @Autowired
     private IBlogRepository blogRepository;
 
-    @Override
-    public List<Blog> showBlogByCategory(int id) {
-        return blogRepository.findBlogByCategoryId(id);
-    }
+//    @Override
+//    public List<Blog> showBlogByCategory(int id) {
+//        return blogRepository.findBlogByCategoryId(id);
+//    }
 
     @Override
     public Blog readBlog(int id) {

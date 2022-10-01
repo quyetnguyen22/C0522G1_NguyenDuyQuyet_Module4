@@ -12,10 +12,22 @@ public class CustomerDto {
     private String phone;
     private String email;
     private String address;
-    private boolean isDeleted = false;
     private CustomerRank rank;
 
     public CustomerDto() {
+    }
+
+    public CustomerDto(Integer id, String name, String birthday, String gender, String idNum, String phone,
+                       String email, String address, boolean isDeleted, CustomerRank rank) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idNum = idNum;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.rank = rank;
     }
 
     public Integer getId() {
@@ -82,13 +94,6 @@ public class CustomerDto {
         this.address = address;
     }
 
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 
     public CustomerRank getRank() {
         return rank;

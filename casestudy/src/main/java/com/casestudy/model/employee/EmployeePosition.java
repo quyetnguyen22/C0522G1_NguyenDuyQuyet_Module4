@@ -1,30 +1,47 @@
-//package com.casestudy.model.employee;
-//
-//public class EmployeePosition {
-//    private Integer id;
-//    private String positionName;
-//
-//    public EmployeePosition() {
-//    }
-//
-//    public EmployeePosition(int id, String positionName) {
-//        this.id = id;
-//        this.positionName = positionName;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getPositionName() {
-//        return positionName;
-//    }
-//
-//    public void setPositionName(String positionName) {
-//        this.positionName = positionName;
-//    }
-//}
+package com.casestudy.model.employee;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+public class EmployeePosition {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String position;
+
+    @OneToMany(mappedBy = "position")
+    @JsonBackReference
+    private Set<Employee> employees;
+
+    public EmployeePosition() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+}

@@ -1,153 +1,149 @@
-//package com.casestudy.model.employee;
-////Họ tên Employee, Ngày sinh, Số CMND, Số ĐT, Email, Trình độ, Vị trí, Lương.
-//public class Employee {
-//    private Integer id;
-//    private String employeeName;
-//    private String employeeBirthday;
-//    private String employeeIdNumber;
-//    private String employeePhone;
-//    private String employeeEmail;
-//    private String employeeSalary;
-//    private String employeeAddress;
-//    private int employeePositionCode;
-//    private int employeeEduLevelCode;
-//    private int employeeDepartmentCode;
-//
-//    public Employee() {
-//    }
-//
-//    public Employee(String employeeName, String employeePhone, String employeeAddress) {
-//        this.employeeName = employeeName;
-//        this.employeePhone = employeePhone;
-//        this.employeeAddress = employeeAddress;
-//    }
-//
-//    public Employee(int id, String employeeName, String employeeBirthday,
-//                    String employeePhone, String employeeEmail, String employeeAddress) {
-//        this.employeeName = employeeName;
-//        this.employeeBirthday = employeeBirthday;
-//        this.employeePhone = employeePhone;
-//        this.employeeEmail = employeeEmail;
-//        this.employeeAddress = employeeAddress;
-//        this.id = id;
-//    }
-//
-//    public Employee(String employeeName, String employeeBirthday, String employeeIdNumber, String employeePhone,
-//                    String employeeEmail, String employeeSalary, String employeeAddress, int employeePositionCode,
-//                    int employeeEduLevelCode, int employeeDepartmentCode) {
-//        this.employeeName = employeeName;
-//        this.employeeBirthday = employeeBirthday;
-//        this.employeeIdNumber = employeeIdNumber;
-//        this.employeePhone = employeePhone;
-//        this.employeeEmail = employeeEmail;
-//        this.employeeSalary = employeeSalary;
-//        this.employeeAddress = employeeAddress;
-//        this.employeePositionCode = employeePositionCode;
-//        this.employeeEduLevelCode = employeeEduLevelCode;
-//        this.employeeDepartmentCode = employeeDepartmentCode;
-//    }
-//
-//    public Employee(int id, String employeeName, String employeeBirthday, String employeeIdNumber, String employeePhone,
-//                    String employeeEmail, String employeeSalary, String employeeAddress, int employeePositionCode,
-//                    int employeeEduLevelCode, int employeeDepartmentCode) {
-//        this.id = id;
-//        this.employeeName = employeeName;
-//        this.employeeBirthday = employeeBirthday;
-//        this.employeeIdNumber = employeeIdNumber;
-//        this.employeePhone = employeePhone;
-//        this.employeeEmail = employeeEmail;
-//        this.employeeSalary = employeeSalary;
-//        this.employeeAddress = employeeAddress;
-//        this.employeePositionCode = employeePositionCode;
-//        this.employeeEduLevelCode = employeeEduLevelCode;
-//        this.employeeDepartmentCode = employeeDepartmentCode;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getEmployeeName() {
-//        return employeeName;
-//    }
-//
-//    public void setEmployeeName(String employeeName) {
-//        this.employeeName = employeeName;
-//    }
-//
-//    public String getEmployeeBirthday() {
-//        return employeeBirthday;
-//    }
-//
-//    public void setEmployeeBirthday(String employeeBirthday) {
-//        this.employeeBirthday = employeeBirthday;
-//    }
-//
-//    public String getEmployeeIdNumber() {
-//        return employeeIdNumber;
-//    }
-//
-//    public void setEmployeeIdNumber(String employeeIdNumber) {
-//        this.employeeIdNumber = employeeIdNumber;
-//    }
-//
-//    public String getEmployeePhone() {
-//        return employeePhone;
-//    }
-//
-//    public void setEmployeePhone(String employeePhone) {
-//        this.employeePhone = employeePhone;
-//    }
-//
-//    public String getEmployeeEmail() {
-//        return employeeEmail;
-//    }
-//
-//    public void setEmployeeEmail(String employeeEmail) {
-//        this.employeeEmail = employeeEmail;
-//    }
-//
-//    public String getEmployeeSalary() {
-//        return employeeSalary;
-//    }
-//
-//    public void setEmployeeSalary(String employeeSalary) {
-//        this.employeeSalary = employeeSalary;
-//    }
-//
-//    public String getEmployeeAddress() {
-//        return employeeAddress;
-//    }
-//
-//    public void setEmployeeAddress(String employeeAddress) {
-//        this.employeeAddress = employeeAddress;
-//    }
-//
-//    public int getEmployeePositionCode() {
-//        return employeePositionCode;
-//    }
-//
-//    public void setEmployeePositionCode(int employeePositionCode) {
-//        this.employeePositionCode = employeePositionCode;
-//    }
-//
-//    public int getEmployeeEduLevelCode() {
-//        return employeeEduLevelCode;
-//    }
-//
-//    public void setEmployeeEduLevelCode(int employeeEduLevelCode) {
-//        this.employeeEduLevelCode = employeeEduLevelCode;
-//    }
-//
-//    public int getEmployeeDepartmentCode() {
-//        return employeeDepartmentCode;
-//    }
-//
-//    public void setEmployeeDepartmentCode(int employeeDepartmentCode) {
-//        this.employeeDepartmentCode = employeeDepartmentCode;
-//    }
-//}
+//Họ tên Employee, Ngày sinh, Số CMND, Số ĐT, Email, Trình độ, Vị trí, Lương.
+package com.casestudy.model.employee;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+
+@Entity
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String name;
+    private String birthday;
+    private String idNumber;
+    private String phone;
+    private String email;
+    private String salary;
+    private String address;
+    private boolean isDeleted = false;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "department_id", referencedColumnName = "id")
+    private EmployeeDepartment department;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "edu_level_id", referencedColumnName = "id")
+    private EmployeeEduLevel eduLevel;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private EmployeePosition position;
+
+    public Employee() {
+    }
+
+    public Employee(Integer id, String name, String birthday, String idNumber, String phone, String email,
+                    String salary, String address) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+        this.idNumber = idNumber;
+        this.phone = phone;
+        this.email = email;
+        this.salary = salary;
+        this.address = address;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public EmployeeDepartment getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(EmployeeDepartment department) {
+        this.department = department;
+    }
+
+    public EmployeeEduLevel getEduLevel() {
+        return eduLevel;
+    }
+
+    public void setEduLevel(EmployeeEduLevel eduLevel) {
+        this.eduLevel = eduLevel;
+    }
+
+    public EmployeePosition getPosition() {
+        return position;
+    }
+
+    public void setPosition(EmployeePosition position) {
+        this.position = position;
+    }
+}

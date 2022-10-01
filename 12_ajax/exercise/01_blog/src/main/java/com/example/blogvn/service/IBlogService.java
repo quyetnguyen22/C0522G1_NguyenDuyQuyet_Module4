@@ -7,7 +7,7 @@ import java.util.List;
 public interface IBlogService {
 
     //    Hiển thị danh sách tóm tắt các blog
-    List<Blog> showBlogByCategory(int id);
+//    List<Blog> showBlogByCategory(int id);
 
     //    Xem nội dung một blog
     Blog readBlog(int id);
