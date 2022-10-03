@@ -39,11 +39,26 @@ public class EmployeeController {
     private IEmployeePositionService positionService;
 
     @GetMapping("list")
-    public ModelAndView getAllCustomer(@PageableDefault(size = 1) Pageable pageable,
+    public ModelAndView getAllEmployee(@PageableDefault(size = 5) Pageable pageable,
                                        @RequestParam(value = "search", defaultValue = "") String search,
                                        Model model) {
+        model.addAttribute("departments", departmentService.getEmployeeDepartment());
+        model.addAttribute("eduLevels", eduLevelService.getEmployeeEduLevel());
+        model.addAttribute("positions", positionService.getEmployeePosition());
+        model.addAttribute("employeeDto", new EmployeeDto());
         model.addAttribute("search", search);
         return new ModelAndView("employee/list", "allEmployee", employeeService.showAllEmployee(pageable, search));
+    }
+
+    @GetMapping("info/{id}")
+    public String getInfo(@PathVariable() int id,
+                          @PageableDefault(value = 5) Pageable pageable,
+                          @RequestParam(value = "search", defaultValue = "") String search,
+                          Model model) {
+        model.addAttribute("search", search);
+        model.addAttribute("allEmployee", employeeService.showAllEmployee(pageable, search));
+        model.addAttribute("employee",employeeService.searchById(id).get());
+        return "/employee/list";
     }
 
     @GetMapping("formAddNew")
@@ -72,9 +87,26 @@ public class EmployeeController {
         EmployeeDto employeeDto = new EmployeeDto();
         BeanUtils.copyProperties(employee, employeeDto);
         model.addAttribute("employeeDto", employeeDto);
+        model.addAttribute("departments", departmentService.getEmployeeDepartment());
+        model.addAttribute("eduLevels", eduLevelService.getEmployeeEduLevel());
+        model.addAttribute("positions", positionService.getEmployeePosition());
 
         return "employee/edit";
     }
+
+//    @GetMapping("formModalEdit/{id}")
+//    public String getFormModalEdit(@PathVariable int id,
+//                              Model model) {
+//        Employee employee = employeeService.searchById(id).get();
+//        EmployeeDto employeeDto = new EmployeeDto();
+//        BeanUtils.copyProperties(employee, employeeDto);
+//        model.addAttribute("employeeDto", employeeDto);
+//        model.addAttribute("departments", departmentService.getEmployeeDepartment());
+//        model.addAttribute("eduLevels", eduLevelService.getEmployeeEduLevel());
+//        model.addAttribute("positions", positionService.getEmployeePosition());
+//
+//        return "employee/list";
+//    }
 
     @PostMapping("edit")
     public String saveEditing(@ModelAttribute EmployeeDto employeeDto,

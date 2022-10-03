@@ -10,11 +10,19 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
+    <style>
+        body {
+            background-image: url("https://c8n8e4j6.rocketcdn.me/wp-content/uploads/2016/09/28-Mr.-Hasgaha13.jpg");
+        }
+        .border {
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-<div th:insert="~{/layout::common}"></div>
+<div th:insert="~{/home::header}"></div>
 <div class="container col-12">
-    <h3 class="text-center">Edit employee</h3>
+    <h3 class="text-center" style="color: white">Edit employee</h3>
 </div>
 
 <div class="container border border-primary w-50">
@@ -53,7 +61,7 @@
             <label class="form-label">Education Level:</label>
             <select th:field="*{eduLevel}" class="form-select">
                 <option
-                        th:each="level : ${eduLevel}" th:text="${level.eduLevel}" th:value="${level.id}">
+                        th:each="level : ${eduLevels}" th:text="${level.eduLevel}" th:value="${level.id}">
                 </option>
             </select>
         </div>
@@ -62,7 +70,7 @@
             <label class="form-label">Department:</label>
             <select th:field="*{department}" class="form-select">
                 <option
-                        th:each="dep : ${department}" th:text="${dep.department}" th:value="${dep.id}">
+                        th:each="dep : ${departments}" th:text="${dep.department}" th:value="${dep.id}">
                 </option>
             </select>
         </div>
@@ -71,7 +79,7 @@
             <label class="form-label">Position:</label>
             <select th:field="*{position}" class="form-select">
                 <option
-                        th:each="pos : ${position}" th:text="${pos.position}" th:value="${pos.id}">
+                        th:each="pos : ${positions}" th:text="${pos.position}" th:value="${pos.id}">
                 </option>
             </select>
         </div>
@@ -83,6 +91,7 @@
         </div>
     </form>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>

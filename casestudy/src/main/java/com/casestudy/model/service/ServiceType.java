@@ -1,30 +1,46 @@
-//package com.casestudy.model.service;
-//
-//public class ServiceType {
-//    private Integer id;
-//    private String typeName;
-//
-//    public ServiceType() {
-//    }
-//
-//    public ServiceType(int id, String typeName) {
-//        this.id = id;
-//        this.typeName = typeName;
-//    }
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getTypeName() {
-//        return typeName;
-//    }
-//
-//    public void setTypeName(String typeName) {
-//        this.typeName = typeName;
-//    }
-//}
+package com.casestudy.model.service;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+public class ServiceType {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "serviceType")
+    private Set<Services> services;
+
+    public ServiceType() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Services> getServices() {
+        return services;
+    }
+
+    public void setServices(Set<Services> services) {
+        this.services = services;
+    }
+}

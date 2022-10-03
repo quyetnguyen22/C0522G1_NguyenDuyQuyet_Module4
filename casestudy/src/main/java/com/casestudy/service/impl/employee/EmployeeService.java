@@ -1,6 +1,7 @@
 package com.casestudy.service.impl.employee;
 
 import com.casestudy.model.employee.Employee;
+import com.casestudy.model.service.Services;
 import com.casestudy.repository.employee.IEmployeeRepository;
 import com.casestudy.service.employee.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,18 +24,18 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
+    public List<Employee> findEmployeeByDto() {
+        return employeeRepository.findByDto();
+    }
+
+    @Override
     public Optional<Employee> searchById(int id) {
         return employeeRepository.findById(id);
     }
 
     @Override
-    public Page<Employee> searchEmployee(Pageable pageable, Employee employee) {
-        return employeeRepository.findEmployeeByNameContaining(pageable,employee);
-    }
-
-    @Override
-    public Employee editEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public void editEmployee(Employee employee) {
+        employeeRepository.save(employee);
     }
 
     @Override
@@ -42,7 +44,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public Employee addNewEmployee(Employee employee) {
-       return employeeRepository.save(employee);
+    public void addNewEmployee(Employee employee) {
+        employeeRepository.save(employee);
     }
 }

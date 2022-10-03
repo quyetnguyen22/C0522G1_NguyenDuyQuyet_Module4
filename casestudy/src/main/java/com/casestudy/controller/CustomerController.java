@@ -6,6 +6,7 @@ import com.casestudy.service.customer.ICustomerRankService;
 import com.casestudy.service.customer.ICustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -27,13 +28,22 @@ public class CustomerController {
     private ICustomerRankService rankService;
 
     @GetMapping("list")
-    public ModelAndView getAllCustomer(@PageableDefault(size = 5) Pageable pageable,
-                                       @RequestParam(value = "search", defaultValue = "") String search,
+    public ModelAndView getAllCustomer(@RequestParam(value = "search", defaultValue = "") String search,
+                                       @PageableDefault(value = 5) Pageable pageable,
                                        Model model) {
         model.addAttribute("search", search);
-        model.addAttribute("allRank", rankService.showAllCustomerRank());
-        model.addAttribute("customerDto", new CustomerDto());
         return new ModelAndView("customer/list", "allCustomer", customerService.showAllCustomer(pageable, search));
+    }
+
+    @GetMapping("info/{id}")
+    public String getInfo(@PathVariable() int id,
+                          @PageableDefault(value = 5) Pageable pageable,
+                          @RequestParam(value = "search", defaultValue = "") String search,
+                          Model model) {
+        model.addAttribute("search", search);
+        model.addAttribute("allCustomer", customerService.showAllCustomer(pageable, search));
+        model.addAttribute("customer",customerService.findById(id).get());
+        return "/customer/list";
     }
 
     @GetMapping("formAddNew")
@@ -57,13 +67,11 @@ public class CustomerController {
     @GetMapping("formEdit/{id}")
     public String getFormEdit(@PathVariable int id,
                               Model model) {
-        model.addAttribute("allRank", rankService.showAllCustomerRank());
-        model.addAttribute("allRank", rankService.showAllCustomerRank());
-        model.addAttribute("customerDto", new CustomerDto());
         Customer customer = customerService.findById(id).get();
         CustomerDto customerDto = new CustomerDto();
         BeanUtils.copyProperties(customer, customerDto);
         model.addAttribute("customerDto", customerDto);
+        model.addAttribute("allRank", rankService.showAllCustomerRank());
 
         return "customer/edit";
     }

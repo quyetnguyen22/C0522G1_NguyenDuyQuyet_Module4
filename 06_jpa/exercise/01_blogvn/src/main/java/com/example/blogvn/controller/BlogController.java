@@ -30,8 +30,6 @@ public class BlogController {
         return "header";
     }
 
-
-
     @GetMapping("/listPage")
     public String showBlogPage(@RequestParam(value = "input", defaultValue = "") String input,
                                @PageableDefault(size = 2, sort = "date",

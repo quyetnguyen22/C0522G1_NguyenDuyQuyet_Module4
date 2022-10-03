@@ -1,8 +1,11 @@
 package com.casestudy.model.customer;
 
+import com.casestudy.model.contract.Contract;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -24,6 +27,10 @@ public class Customer {
     @JoinColumn(name = "rank_id", referencedColumnName = "id")
     @JsonManagedReference
    private CustomerRank rank;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "customer")
+    private Set<Contract> contracts;
 
     public Customer() {
     }
@@ -131,5 +138,13 @@ public class Customer {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
     }
 }

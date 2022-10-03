@@ -1,9 +1,12 @@
 //Họ tên Employee, Ngày sinh, Số CMND, Số ĐT, Email, Trình độ, Vị trí, Lương.
 package com.casestudy.model.employee;
 
+import com.casestudy.model.contract.Contract;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -35,6 +38,10 @@ public class Employee {
     @JsonManagedReference
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private EmployeePosition position;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "employee")
+    private Set<Contract> contracts;
 
     public Employee() {
     }
@@ -145,5 +152,13 @@ public class Employee {
 
     public void setPosition(EmployeePosition position) {
         this.position = position;
+    }
+
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
     }
 }
