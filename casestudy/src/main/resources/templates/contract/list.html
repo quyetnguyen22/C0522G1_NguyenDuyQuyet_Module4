@@ -64,11 +64,24 @@
     </table>
 
     <div>
-        <a th:href="@{'/contract/list'(page=${contracts.number - 1},search=${search})}"
-           th:if="${contracts.hasPrevious()}">Previous</a>
-        <span tyle="color: white" th:text="${contracts.number + 1}"></span>/<span tyle="color: white" th:text="${contracts.totalPages}"></span>
-        <a th:href="@{'/contract/list'(page=${contracts.number + 1},search=${search})}"
-           th:if="${contracts.hasNext()}">Next</a>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/customer/list'(page=${contracts.number - 1},search=${search})}"
+                       th:if="${contracts.hasPrevious()}">Previous</a>
+                </li>
+                <li class="page-item" th:each="star:${#numbers.sequence(1,contracts.totalPages - 1)}">
+                    <a class="page-link" tyle="color: white"
+                       th:href="@{'/customer/list'(page=${star},search=${search})}">
+                        <span th:text="${star}"></span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/customer/list'(page=${contracts.number + 1},search=${search})}"
+                       th:if="${contracts.hasNext()}">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 

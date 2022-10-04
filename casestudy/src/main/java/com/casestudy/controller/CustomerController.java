@@ -35,17 +35,6 @@ public class CustomerController {
         return new ModelAndView("customer/list", "allCustomer", customerService.showAllCustomer(pageable, search));
     }
 
-    @GetMapping("info/{id}")
-    public String getInfo(@PathVariable() int id,
-                          @PageableDefault(value = 5) Pageable pageable,
-                          @RequestParam(value = "search", defaultValue = "") String search,
-                          Model model) {
-        model.addAttribute("search", search);
-        model.addAttribute("allCustomer", customerService.showAllCustomer(pageable, search));
-        model.addAttribute("customer",customerService.findById(id).get());
-        return "/customer/list";
-    }
-
     @GetMapping("formAddNew")
     public String getFormAdd(Model model) {
         model.addAttribute("allRank", rankService.showAllCustomerRank());

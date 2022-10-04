@@ -177,11 +177,24 @@
     </table>
 
     <div>
-        <a th:href="@{'/facility/list'(page=${allService.number - 1},search=${search})}"
-           th:if="${allService.hasPrevious()}">Previous</a>
-        <span th:text="${allService.number + 1}" style="color: white"></span>/<span style="color: white" th:text="${allService.totalPages}"></span>
-        <a th:href="@{'/facility/list'(page=${allService.number + 1},search=${search})}"
-           th:if="${allService.hasNext()}">Next</a>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/customer/list'(page=${allService.number - 1},search=${search})}"
+                       th:if="${allService.hasPrevious()}">Previous</a>
+                </li>
+                <li class="page-item" th:each="star:${#numbers.sequence(1,allService.totalPages - 1)}">
+                    <a class="page-link" tyle="color: white"
+                       th:href="@{'/customer/list'(page=${star},search=${search})}">
+                        <span th:text="${star}"></span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/customer/list'(page=${allService.number + 1},search=${search})}"
+                       th:if="${allService.hasNext()}">Next</a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
