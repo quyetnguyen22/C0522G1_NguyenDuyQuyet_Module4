@@ -3,20 +3,22 @@ package com.casestudy.model.contract;
 import com.casestudy.model.customer.Customer;
 import com.casestudy.model.employee.Employee;
 import com.casestudy.model.service.Services;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
-    String begin;
-    String end;
-    String deposit;
-    String total;
+    private Integer id;
+    private String begin;
+    private String end;
+    private String deposit;
+    private String total;
 
     @ManyToOne
     @JsonManagedReference
@@ -32,6 +34,10 @@ public class Contract {
     @JsonManagedReference
     @JoinColumn(name = "service_id", referencedColumnName = "id")
     private Services services;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "contract")
+    private Set<ContractDetail> contractDetails;
 
     public Contract() {
     }
@@ -98,5 +104,13 @@ public class Contract {
 
     public void setServices(Services services) {
         this.services = services;
+    }
+
+    public Set<ContractDetail> getContractDetails() {
+        return contractDetails;
+    }
+
+    public void setContractDetails(Set<ContractDetail> contractDetails) {
+        this.contractDetails = contractDetails;
     }
 }

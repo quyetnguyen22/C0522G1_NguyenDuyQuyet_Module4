@@ -1,11 +1,7 @@
 package com.casestudy.controller;
 
-import com.casestudy.dto.CustomerDto;
 import com.casestudy.dto.EmployeeDto;
-import com.casestudy.model.customer.Customer;
 import com.casestudy.model.employee.Employee;
-import com.casestudy.service.customer.ICustomerRankService;
-import com.casestudy.service.customer.ICustomerService;
 import com.casestudy.service.employee.IEmployeeDepartmentService;
 import com.casestudy.service.employee.IEmployeeEduLevelService;
 import com.casestudy.service.employee.IEmployeePositionService;

@@ -6,11 +6,12 @@ import com.casestudy.service.customer.ICustomerRankService;
 import com.casestudy.service.customer.ICustomerService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -44,13 +45,21 @@ public class CustomerController {
 
 
     @PostMapping("addNew")
-    public String saveNewCustomer(@ModelAttribute CustomerDto customerDto,
-                                  RedirectAttributes attributes) {
-        Customer customer = new Customer();
-        BeanUtils.copyProperties(customerDto, customer);
-        customerService.addNewCustomer(customer);
-        attributes.addFlashAttribute("add", "Added " + customer.getName() + " successfully!");
-        return "redirect:/customer/formAddNew";
+    public String saveNewCustomer(@ModelAttribute @Validated CustomerDto customerDto,
+                                  BindingResult bindingResult,
+                                  RedirectAttributes attributes,
+                                  Model model) {
+        new CustomerDto().validate(customerDto, bindingResult);
+        if (bindingResult.hasFieldErrors()) {
+            model.addAttribute("allRank", rankService.showAllCustomerRank());
+            return "customer/add";
+        } else {
+            Customer customer = new Customer();
+            BeanUtils.copyProperties(customerDto, customer);
+            customerService.addNewCustomer(customer);
+            attributes.addFlashAttribute("add", "Added " + customer.getName() + " successfully!");
+            return "redirect:/customer/formAddNew";
+        }
     }
 
     @GetMapping("formEdit/{id}")
@@ -66,14 +75,21 @@ public class CustomerController {
     }
 
     @PostMapping("edit")
-    public String saveEditing(@ModelAttribute CustomerDto customerDto,
-                              RedirectAttributes attributes) {
-        Customer customer = customerService.findById(customerDto.getId()).get();
-
-        BeanUtils.copyProperties(customerDto, customer);
-        customerService.editCustomer(customer);
-        attributes.addFlashAttribute("edit", "Edited " + customer.getName() + " successfully");
-        return "redirect:/customer/list";
+    public String saveEditing(@ModelAttribute @Validated CustomerDto customerDto,
+                              BindingResult bindingResult,
+                              RedirectAttributes attributes,
+                              Model model) {
+        new CustomerDto().validate(customerDto, bindingResult);
+        if (bindingResult.hasFieldErrors()){
+            model.addAttribute("allRank", rankService.showAllCustomerRank());
+            return "customer/edit";
+        } else {
+            Customer customer = customerService.findById(customerDto.getId()).get();
+            BeanUtils.copyProperties(customerDto, customer);
+            customerService.editCustomer(customer);
+            attributes.addFlashAttribute("edit", "Edited " + customer.getName() + " successfully");
+            return "redirect:/customer/list";
+        }
     }
 
     @GetMapping("delete/{id}")

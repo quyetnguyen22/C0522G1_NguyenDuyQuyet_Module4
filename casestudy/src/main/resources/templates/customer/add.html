@@ -14,6 +14,7 @@
         body {
             background-image: url("https://c8n8e4j6.rocketcdn.me/wp-content/uploads/2016/09/28-Mr.-Hasgaha13.jpg");
         }
+
         .border {
             background-color: white;
         }
@@ -31,6 +32,7 @@
         <div class="col-12">
             <label for="inputName" class="form-label">Name:</label>
             <input type="text" th:field="*{name}" class="form-control" id="inputName"/>
+            <p style="color: red" th:errors="*{name}" th:if="${#fields.hasErrors('name')}"></p>
         </div>
         <div class="col-12">
             <label for="inputBirthday" class="form-label">Date of birth:</label>
@@ -62,16 +64,19 @@
         <div class="col-12">
             <label for="inputIdNum" class="form-label">ID number:</label>
             <input type="text" th:field="*{idNum}" class="form-control" id="inputIdNum"/>
+            <p style="color: red" th:errors="*{idNum}" th:if="${#fields.hasErrors('idNum')}"></p>
         </div>
 
         <div class="col-12">
             <label for="inputPhoneNum" class="form-label">Phone number:</label>
             <input type="text" th:field="*{phone}" class="form-control" id="inputPhoneNum"/>
+            <p style="color: red" th:errors="*{phone}" th:if="${#fields.hasErrors('phone')}"></p>
         </div>
 
         <div class="col-12">
             <label for="inputEmail" class="form-label">Email:</label>
             <input type="text" th:field="*{email}" class="form-control" id="inputEmail" placeholder="acb@gmail.com"/>
+            <p style="color: red" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"></p>
         </div>
 
         <div class="col-12">
@@ -82,9 +87,9 @@
         <div class="col-12">
             <label class="form-label">Rank:</label>
             <select th:field="*{rank}" class="form-select">
-                    <option
-                            th:each="rank : ${allRank}" th:text="${rank.rankName}" th:value="${rank.id}">
-                    </option>
+                <option
+                        th:each="rank : ${allRank}" th:text="${rank.rankName}" th:value="${rank.id}">
+                </option>
             </select>
         </div>
 

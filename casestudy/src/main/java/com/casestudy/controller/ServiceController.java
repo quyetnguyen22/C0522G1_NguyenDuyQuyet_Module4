@@ -1,10 +1,7 @@
 package com.casestudy.controller;
 
-import com.casestudy.dto.CustomerDto;
 import com.casestudy.dto.ServiceDto;
-import com.casestudy.model.customer.Customer;
 import com.casestudy.model.service.Services;
-import com.casestudy.service.employee.IEmployeeService;
 import com.casestudy.service.service.IServiceRentingService;
 import com.casestudy.service.service.IServiceService;
 import com.casestudy.service.service.IServiceTypeService;

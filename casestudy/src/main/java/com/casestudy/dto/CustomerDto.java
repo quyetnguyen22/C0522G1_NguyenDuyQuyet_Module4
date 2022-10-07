@@ -1,16 +1,32 @@
 package com.casestudy.dto;
 
 import com.casestudy.model.customer.CustomerRank;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-public class CustomerDto {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+
+public class CustomerDto implements Validator {
     private Integer id;
 
+    @NotBlank
     private String name;
+
     private String birthday;
     private String gender;
+
+    @Pattern(regexp = "[0-9]{10}", message = "ID number must be 10 numbers")
     private String idNum;
+
+    @Pattern(regexp = "(0|([(]84[)][+]))(9(0|1)[0-9]{7})",
+            message = "Please input following 090xxxxxxx or 091xxxxxxx hoặc (84)+90xxxxxxx or (84)+91xxxxxxx")
     private String phone;
+
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}| *$",
+            message = "Please input email following 'abc@domain.com'")
     private String email;
+
     private String address;
     private CustomerRank rank;
 
@@ -18,7 +34,7 @@ public class CustomerDto {
     }
 
     public CustomerDto(Integer id, String name, String birthday, String gender, String idNum, String phone,
-                       String email, String address, boolean isDeleted, CustomerRank rank) {
+                       String email, String address, CustomerRank rank) {
         this.id = id;
         this.name = name;
         this.birthday = birthday;
@@ -101,5 +117,24 @@ public class CustomerDto {
 
     public void setRank(CustomerRank rank) {
         this.rank = rank;
+    }
+
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDto customerDto = (CustomerDto) target;
+        if (!customerDto.name.matches("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$")) {
+            errors.rejectValue("nameRegex", "nameValidation.regex", "Please input name following 'Nguyen Van A'");
+        }
+//        Date dateNow = Date.valueOf(LocalDate.now());
+//        Date birth = Date.valueOf(customerDto.birthday);
+//        if (true) {
+//            errors.rejectValue("name", "nameValidation.regex","Please input name following 'Nguyen Van A'");
+//        }
     }
 }

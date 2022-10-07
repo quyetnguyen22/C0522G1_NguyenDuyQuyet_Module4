@@ -1,12 +1,15 @@
 package com.casestudy.controller;
 
+import com.casestudy.dto.ContractDetailDto;
 import com.casestudy.dto.ContractDto;
-import com.casestudy.dto.CustomerDto;
 import com.casestudy.model.contract.Contract;
-import com.casestudy.model.customer.Customer;
+import com.casestudy.model.contract.ContractDetail;
+import com.casestudy.model.service.ServiceAttach;
+import com.casestudy.service.contract.IContractDetailService;
 import com.casestudy.service.contract.IContractService;
 import com.casestudy.service.customer.ICustomerService;
 import com.casestudy.service.employee.IEmployeeService;
+import com.casestudy.service.service.IServiceAttachService;
 import com.casestudy.service.service.IServiceService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,11 +38,19 @@ public class ContractController {
     @Autowired
     private IEmployeeService employeeService;
 
+    @Autowired
+    private IServiceAttachService attachService;
+
+    @Autowired
+    private IContractDetailService contractDetailService;
+
     @GetMapping("list")
-    public ModelAndView getAllCustomer(@RequestParam(value = "search", defaultValue = "") String search,
+    public ModelAndView getAllContrac(@RequestParam(value = "search", defaultValue = "") String search,
                                        @PageableDefault(value = 5) Pageable pageable,
                                        Model model) {
         model.addAttribute("search", search);
+        model.addAttribute("ServiceAttach", attachService.getListServiceAttach());
+        model.addAttribute("contractDetailDto", new ContractDetailDto());
         return new ModelAndView("contract/list", "contracts", contractService.showAllContract(pageable, search));
     }
 
@@ -52,14 +63,14 @@ public class ContractController {
         return "contract/add";
     }
 
-
-    @PostMapping("addNew")
-    public String saveNewContract(@ModelAttribute ContractDto contractDto,
+    @PostMapping("addContractDetail")
+    public String saveNewService(@ModelAttribute ContractDetailDto contractDetailDto,
                                   RedirectAttributes attributes) {
-        Contract contract = new Contract();
-        BeanUtils.copyProperties(contractDto, contract);
-        contractService.addNewContract(contract);
-        attributes.addFlashAttribute("add", "Added new contract successfully!");
-        return "redirect:/contract/formAddNew";
+        ContractDetail contractDetail = new ContractDetail();
+        BeanUtils.copyProperties(contractDetailDto, contractDetail);
+        contractDetailService.addNewContractDetail(contractDetail);
+        attributes.addFlashAttribute("add", "Added new contract detail successfully!");
+        return "redirect:/contract/list";
     }
+
 }

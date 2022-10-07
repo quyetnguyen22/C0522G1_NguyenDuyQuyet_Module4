@@ -1,31 +1,16 @@
-package com.casestudy.model.contract;
+package com.casestudy.dto;
 
+import com.casestudy.model.contract.Contract;
 import com.casestudy.model.service.ServiceAttach;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.*;
+public class ContractDetailDto {
 
-@Entity
-public class ContractDetail {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private Integer quantity;
-
-    @JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "contract_id", referencedColumnName = "id")
     private Contract contract;
-
-    @JsonManagedReference
-    @ManyToOne
-    @JoinColumn(name = "service_attach_id", referencedColumnName = "id")
     private ServiceAttach serviceAttach;
 
-
-    public ContractDetail() {
+    public ContractDetailDto() {
     }
 
     public Integer getId() {
