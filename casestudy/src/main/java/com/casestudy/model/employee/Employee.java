@@ -24,22 +24,25 @@ public class Employee {
     private String address;
     private boolean isDeleted = false;
 
+
+    //    @JsonManagedReference
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "department_id", referencedColumnName = "id")
     private EmployeeDepartment department;
 
+
+    //    @JsonManagedReference
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "edu_level_id", referencedColumnName = "id")
     private EmployeeEduLevel eduLevel;
 
+
+    //    @JsonManagedReference
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private EmployeePosition position;
 
-    @JsonBackReference
+    //    @JsonBackReference
     @OneToMany(mappedBy = "employee")
     private Set<Contract> contracts;
 

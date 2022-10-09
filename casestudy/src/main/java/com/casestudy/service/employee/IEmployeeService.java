@@ -12,7 +12,7 @@ public interface IEmployeeService {
 
     Page<Employee> showAllEmployee(Pageable pageable, String search);
 
-    List<Employee> findEmployeeByDto();
+    List<Employee> findEmployee();
 
     Optional<Employee> searchById(int id);
 

@@ -3,8 +3,10 @@ package com.casestudy.model.customer;
 import com.casestudy.model.contract.Contract;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,7 +17,10 @@ public class Customer {
     private Integer id;
 
     private String name;
-    private String birthday;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
+
     private String gender;
     private String idNum;
     private String phone;
@@ -25,40 +30,16 @@ public class Customer {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "rank_id", referencedColumnName = "id")
-    @JsonManagedReference
+//    @JsonManagedReference
    private CustomerRank rank;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Contract> contracts;
 
     public Customer() {
     }
 
-    public Customer(String name, String birthday, String gender, String idNum, String phone, String email,
-                     String address, CustomerRank rank) {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.idNum = idNum;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.rank = rank;
-    }
-
-    public Customer(Integer id, String name, String birthday, String gender, String idNum, String phone, String email,
-                     String address, CustomerRank rank) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.idNum = idNum;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.rank = rank;
-    }
 
     public Integer getId() {
         return id;
@@ -76,11 +57,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

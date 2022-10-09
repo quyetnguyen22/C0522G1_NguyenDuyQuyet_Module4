@@ -24,7 +24,7 @@ public class EmployeeService implements IEmployeeService {
     }
 
     @Override
-    public List<Employee> findEmployeeByDto() {
+    public List<Employee> findEmployee() {
         return employeeRepository.findByDto();
     }
 

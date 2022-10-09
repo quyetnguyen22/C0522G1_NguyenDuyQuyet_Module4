@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Optional;
 
 @Controller
@@ -39,6 +41,10 @@ public class CustomerController {
     @GetMapping("formAddNew")
     public String getFormAdd(Model model) {
         model.addAttribute("allRank", rankService.showAllCustomerRank());
+        LocalDate lessThanAgeAge = LocalDate.now().minusYears(90);
+        LocalDate graterThanAge = LocalDate.now().minusYears(17);
+        model.addAttribute("lessThanAgeAge", lessThanAgeAge);
+        model.addAttribute("graterThanAge", graterThanAge);
         model.addAttribute("customerDto", new CustomerDto());
         return "customer/add";
     }
@@ -69,6 +75,10 @@ public class CustomerController {
         CustomerDto customerDto = new CustomerDto();
         BeanUtils.copyProperties(customer, customerDto);
         model.addAttribute("customerDto", customerDto);
+        LocalDate lessThanAgeAge = LocalDate.now().minusYears(90);
+        LocalDate graterThanAge = LocalDate.now().minusYears(18);
+        model.addAttribute("lessThanAgeAge", lessThanAgeAge);
+        model.addAttribute("graterThanAge", graterThanAge);
         model.addAttribute("allRank", rankService.showAllCustomerRank());
 
         return "customer/edit";

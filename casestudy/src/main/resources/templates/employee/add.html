@@ -34,7 +34,8 @@
         </div>
         <div class="col-12">
             <label for="inputBirthday" class="form-label">Date of birth:</label>
-            <input type="date" th:field="*{birthday}" class="form-control" id="inputBirthday"/>
+            <input type="date" th:field="*{birthday}" th:min="${lessThanAgeAge}" th:max="${graterThanAge}"
+                   class="form-control" id="inputBirthday"/>
         </div>
 
         <div class="col-12">

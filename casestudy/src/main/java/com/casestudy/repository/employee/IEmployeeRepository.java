@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface IEmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    @Query(value = "select * from employee where is_delete = 0", nativeQuery = true)
+    @Query(value = "select * from employee where is_deleted = 0", nativeQuery = true)
     List<Employee> findByDto();
 
     @Query(value = "select * from employee where name like %:search% and is_deleted = 0", nativeQuery = true)

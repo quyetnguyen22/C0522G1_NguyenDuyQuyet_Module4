@@ -1,11 +1,13 @@
 package com.casestudy.dto;
 
 import com.casestudy.model.customer.CustomerRank;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 public class CustomerDto implements Validator {
     private Integer id;
@@ -13,9 +15,11 @@ public class CustomerDto implements Validator {
     @NotBlank
     private String name;
 
-    private String birthday;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
     private String gender;
 
+    @NotBlank
     @Pattern(regexp = "[0-9]{10}", message = "ID number must be 10 numbers")
     private String idNum;
 
@@ -31,19 +35,6 @@ public class CustomerDto implements Validator {
     private CustomerRank rank;
 
     public CustomerDto() {
-    }
-
-    public CustomerDto(Integer id, String name, String birthday, String gender, String idNum, String phone,
-                       String email, String address, CustomerRank rank) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.idNum = idNum;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.rank = rank;
     }
 
     public Integer getId() {
@@ -62,11 +53,11 @@ public class CustomerDto implements Validator {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -128,7 +119,7 @@ public class CustomerDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CustomerDto customerDto = (CustomerDto) target;
-        if (!customerDto.name.matches("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$")) {
+        if (!customerDto.name.matches("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5} *$")) {
             errors.rejectValue("nameRegex", "nameValidation.regex", "Please input name following 'Nguyen Van A'");
         }
 //        Date dateNow = Date.valueOf(LocalDate.now());

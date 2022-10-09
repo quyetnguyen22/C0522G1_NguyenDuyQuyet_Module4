@@ -3,14 +3,22 @@ package com.casestudy.dto;
 import com.casestudy.model.customer.Customer;
 import com.casestudy.model.employee.Employee;
 import com.casestudy.model.service.Services;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class ContractDto {
 
-    Integer id;
-    String begin;
-    String end;
-    String deposit;
-    String total;
+    private Integer id;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date begin;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date end;
+
+    private String deposit;
+    private String total;
     private Employee employee;
     private Customer customer;
     private Services services;
@@ -26,19 +34,19 @@ public class ContractDto {
         this.id = id;
     }
 
-    public String getBegin() {
+    public Date getBegin() {
         return begin;
     }
 
-    public void setBegin(String begin) {
+    public void setBegin(Date begin) {
         this.begin = begin;
     }
 
-    public String getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 

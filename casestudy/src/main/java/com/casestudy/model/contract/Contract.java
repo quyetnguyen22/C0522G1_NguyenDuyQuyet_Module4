@@ -3,10 +3,10 @@ package com.casestudy.model.contract;
 import com.casestudy.model.customer.Customer;
 import com.casestudy.model.employee.Employee;
 import com.casestudy.model.service.Services;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -15,27 +15,32 @@ public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String begin;
-    private String end;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date begin;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date end;
+
     private String deposit;
     private String total;
 
     @ManyToOne
-    @JsonManagedReference
+//    @JsonManagedReference
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
     @ManyToOne
-    @JsonManagedReference
+//    @JsonManagedReference
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
     @ManyToOne
-    @JsonManagedReference
+//    @JsonManagedReference
     @JoinColumn(name = "service_id", referencedColumnName = "id")
     private Services services;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "contract")
     private Set<ContractDetail> contractDetails;
 
@@ -50,19 +55,19 @@ public class Contract {
         this.id = id;
     }
 
-    public String getBegin() {
+    public Date getBegin() {
         return begin;
     }
 
-    public void setBegin(String begin) {
+    public void setBegin(Date begin) {
         this.begin = begin;
     }
 
-    public String getEnd() {
+    public Date getEnd() {
         return end;
     }
 
-    public void setEnd(String end) {
+    public void setEnd(Date end) {
         this.end = end;
     }
 

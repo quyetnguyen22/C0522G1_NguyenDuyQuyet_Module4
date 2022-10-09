@@ -9,10 +9,15 @@ import java.util.Optional;
 
 public interface IServiceService {
     Page<Services> showAllService(Pageable pageable, String search);
-    List<Services> findServiceByDto();
+
+    List<Services> findService();
+
     void addNewService(Services service);
+
     void editService(Services service);
+
     void deleteService(int id);
+
     Optional<Services> searchById(int id);
 
 }

@@ -14,7 +14,7 @@ public class EmployeeDepartment {
 
     private String department;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees;
 

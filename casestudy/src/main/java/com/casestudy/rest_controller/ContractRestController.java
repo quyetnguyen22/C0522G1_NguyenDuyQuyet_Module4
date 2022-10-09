@@ -11,19 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("contract")
+@CrossOrigin
+@RequestMapping("/contract")
 public class ContractRestController {
 
     @Autowired
     private IContractService contractService;
 
-    @PostMapping("addNew")
-    public ResponseEntity<Contract > saveNewContract(@RequestBody ContractDto contractDto,
-                                  RedirectAttributes attributes) {
+    @PostMapping("/addNewContract")
+    public ResponseEntity<Contract> saveNewContract(@RequestBody ContractDto contractDto
+                                  ) {
         Contract contract = new Contract();
         BeanUtils.copyProperties(contractDto, contract);
-        attributes.addFlashAttribute("add", "Added new contract successfully!");
-        return new ResponseEntity<>(contractService.addNewContract(contract), HttpStatus.CREATED);
+        contractService.addNewContract(contract);
+//        attributes.addFlashAttribute("add", "Added new contract successfully!");
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 }

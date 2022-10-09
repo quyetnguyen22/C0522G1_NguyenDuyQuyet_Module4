@@ -13,7 +13,7 @@ public class ServiceType {
     private Integer id;
     private String name;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "serviceType")
     private Set<Services> services;
 

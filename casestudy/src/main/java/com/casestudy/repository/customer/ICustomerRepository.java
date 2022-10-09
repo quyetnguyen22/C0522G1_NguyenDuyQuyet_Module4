@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-    @Query(value = "select * from employee where is_delete = 0", nativeQuery = true)
+    @Query(value = "select * from customer where is_deleted = 0", nativeQuery = true)
     List<Customer> findByDto();
 
 //    countQuery = "select count(*) from (select * from customer where name like %:search% and is_deleted = 0)"

@@ -102,7 +102,7 @@
                        th:if="${allCustomer.hasPrevious()}">Previous</a>
                 </li>
                 <li class="page-item" th:each="star:${#numbers.sequence(1,allCustomer.totalPages - 1)}">
-                    <a class="page-link" tyle="color: white"
+                    <a class="page-link"
                        th:href="@{'/customer/list'(page=${star},search=${search})}">
                         <span th:text="${star}"></span>
                     </a>

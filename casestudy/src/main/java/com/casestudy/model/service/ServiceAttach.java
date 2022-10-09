@@ -17,7 +17,7 @@ public class ServiceAttach {
     private String unit;
     private Double price;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "serviceAttach")
     private Set<ContractDetail> contractDetails;
 

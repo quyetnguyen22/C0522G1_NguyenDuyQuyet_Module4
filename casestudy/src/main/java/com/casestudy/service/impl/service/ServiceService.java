@@ -23,7 +23,7 @@ public class ServiceService implements IServiceService {
     }
 
     @Override
-    public List<Services> findServiceByDto() {
+    public List<Services> findService() {
         return serviceRepository.findByDto();
     }
 

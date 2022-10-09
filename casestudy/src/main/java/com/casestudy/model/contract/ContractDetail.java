@@ -14,12 +14,12 @@ public class ContractDetail {
 
     private Integer quantity;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "contract_id", referencedColumnName = "id")
     private Contract contract;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "service_attach_id", referencedColumnName = "id")
     private ServiceAttach serviceAttach;

@@ -24,17 +24,17 @@ public class Services {
     private String freeService;
     private boolean isDeleted = false;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "type_id", referencedColumnName = "id")
     private ServiceType serviceType;
 
-    @JsonManagedReference
+//    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "renting_id", referencedColumnName = "id")
     private ServiceRenting serviceRenting;
 
-    @JsonBackReference
+//    @JsonBackReference
     @OneToMany(mappedBy = "services")
     private Set<Contract> contracts;
 

@@ -14,7 +14,7 @@ public class CustomerRank {
     private String rankName;
 
     @OneToMany(mappedBy = "rank")
-    @JsonBackReference
+//    @JsonBackReference
     private Set<Customer> customer;
 
     public CustomerRank() {

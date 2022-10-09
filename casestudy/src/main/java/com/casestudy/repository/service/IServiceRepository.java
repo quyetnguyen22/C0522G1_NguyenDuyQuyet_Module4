@@ -21,6 +21,6 @@ public interface IServiceRepository extends JpaRepository<Services, Integer> {
     @Query(value = "update services set is_deleted = 1 where id = :delId", nativeQuery = true)
     void delete(@Param("delId") int id);
 
-    @Query(value = "select * from service where is_delete = 0", nativeQuery = true)
+    @Query(value = "select * from services", nativeQuery = true)
     List<Services> findByDto();
 }
