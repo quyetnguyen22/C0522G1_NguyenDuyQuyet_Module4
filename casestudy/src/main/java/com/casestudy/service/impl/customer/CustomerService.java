@@ -22,7 +22,7 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public Page<Customer> findCustomer(Pageable pageable, String search) {
+    public Page<Customer> getCustomer(Pageable pageable, String search) {
         return customerRepository.findByName(pageable, search);
     }
 

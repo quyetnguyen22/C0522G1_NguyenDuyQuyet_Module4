@@ -12,7 +12,7 @@ public interface ICustomerService {
 
     Page<Customer> showAllCustomer(Pageable pageable);
 
-    Page<Customer> findCustomer(Pageable pageable, String search);
+    Page<Customer> getCustomer(Pageable pageable, String search);
 
     Optional<Customer> findById(int id);
 

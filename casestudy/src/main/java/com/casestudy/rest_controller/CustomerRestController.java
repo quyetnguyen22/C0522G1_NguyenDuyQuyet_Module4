@@ -87,9 +87,9 @@ public class CustomerRestController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<Page<Customer>> findCustomer(@RequestParam(value = "name", defaultValue = "") String name,
+    public ResponseEntity<Page<Customer>> getCustomer(@RequestParam(value = "name", defaultValue = "") String name,
                                                        @PageableDefault Pageable pageable) {
-        Page<Customer> customerList = customerService.findCustomer(pageable, name);
+        Page<Customer> customerList = customerService.getCustomer(pageable, name);
 
         if (customerList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
