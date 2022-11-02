@@ -28,12 +28,12 @@ public class Customer {
     private String address;
     private boolean isDeleted = false;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "rank_id", referencedColumnName = "id")
 //    @JsonManagedReference
    private CustomerRank rank;
 
-//    @JsonBackReference
+    @JsonBackReference
     @OneToMany(mappedBy = "customer")
     private Set<Contract> contracts;
 

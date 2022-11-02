@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Title</title>
+
+    <style>
+        body {
+            background-image: url("https://c8n8e4j6.rocketcdn.me/wp-content/uploads/2016/09/28-Mr.-Hasgaha13.jpg");
+        }
+    </style>
+</head>
+<body>
+<!--<div th:insert="~{/home::header}"></div>-->
+<div class="container col-12">
+    <h3 class="text-center">
+        <a href="/list" class="text-white text-decoration-none">Product List</a>
+    </h3>
+    <h5 class="text-center" style="color: blue" th:text="${msg}"></h5>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="row col-2">
+        <a th:href="@{/formAdd}" class="btn btn-primary btn-sm">Add new product</a>
+        </div>
+
+        <div class="row col-2">
+            <label class="form-label">Product Type:</label>
+            <select th:field="*{productType}" class="form-select">
+                <option
+                        th:each="typeProduct : ${productType}" th:text="${typeProduct.name}"
+                        th:value="${typeProduct.id}">
+                </option>
+            </select>
+        </div>
+
+        <div class="row col-8" style="float: right">
+            <form action="/search">
+                <div class="row" style="--bs-gutter-x: 0">
+                    <div class="col-2">
+                        <label for="inputName" class="form-label">Product Name:</label>
+                        <input type="text" name="name" class="form-control form-control-sm" id="inputName" placeholder="Input name">
+                    </div>
+                    <div class="col-2 px-0">
+                        <label for="price" class="form-label">Price Begin:</label>
+                        <input type="text" name="price" class="form-control form-control-sm" id="price"
+                               placeholder="Input price begin">
+                    </div>
+
+                    <div class="px-0 col-1 text-center">
+                        <button type="submit" name="action" value="search" class="btn btn-secondary btn-sm">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <table id="customerTable" class="table table-light table-striped table-bordered" style="width: 100%">
+        <tr>
+            <th>No</th>
+            <th>Select</th>
+            <th>Product Name</th>
+            <th>Price Begin</th>
+            <th>Product Type</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="product, status : ${allProducts}">
+            <td th:text="${allProducts.number * allProducts.size + status.count}"></td>
+            <td>
+                <input type="checkbox">
+            </td>
+            <td>
+                <a class="text-decoration-none"
+                   th:text="${product.name}">
+                </a>
+            </td>
+            <td>
+                <a class="text-decoration-none"
+                   th:text="${product.price} + ' VND'">
+                </a>
+            </td>
+            <td th:text="${product.productType.name}"></td>
+            <td th:text="${product.status}"></td>
+            <td>
+                <a class="text-decoration-none text-white btn btn-primary btn-sm"
+                   th:href="@{/formEdit/__${product.id}__}">
+                    Edit
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <!--    <a type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-row="${customer}"-->
+    <!--       th:attr="data-bs-target='#delete' + ${customer.id}">-->
+    <!--        <i class="fas fa-address-card"></i>-->
+    <!--        Delete-->
+    <!--    </a>-->
+    <!--    &lt;!&ndash; Modal Delete &ndash;&gt;-->
+    <!--    <div th:fragment="modal" class="modal fade" th:id="delete + ${customer.id}" tabindex="-1"-->
+    <!--         aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+    <!--        <div class="modal-dialog">-->
+    <!--            <div class="modal-content">-->
+    <!--                <div class="modal-header">-->
+    <!--                    <h5 class="modal-title" id="exampleModalLabel">You are about to delete:</h5>-->
+    <!--                    <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+    <!--                            aria-label="Close"></button>-->
+    <!--                </div>-->
+    <!--                <div class="modal-body">-->
+    <!--                    <span class="ps-2">Customer: </span>-->
+    <!--                    <span style="color: red" th:text="${customer.name}"></span>-->
+    <!--                </div>-->
+    <!--                <div class="modal-footer">-->
+    <!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+    <!--                    <a th:href="@{/customer/delete/__${customer.id}__}" type="submit"-->
+    <!--                       class="btn btn-primary text-decoration-none">Delete</a>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/list'(page=${allProducts.number - 1})}"
+                       th:if="${allProducts.hasPrevious()}">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/list'(page=${allProducts.number})}"
+                       th:text="${allProducts.number + 1}">
+                    </a>
+                </li>
+                <li class="page-item" th:if="${allProducts.hasNext()}">
+                    <a class="page-link" th:href="@{'/list'(page=${allProducts.number + 1})}"
+                       th:text="${allProducts.number + 2}">
+                    </a>
+                </li>
+                <li class="page-item" th:if="(${allProducts.totalPages} - ${allProducts.number} > 2)">
+                    <a class="page-link" th:href="@{'/list'(page=${allProducts.number + 2})}"
+                       th:text="${allProducts.number + 3}">
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/list'(page=${allProducts.number + 1})}"
+                       th:if="${allProducts.hasNext()}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+</body>
+</html>

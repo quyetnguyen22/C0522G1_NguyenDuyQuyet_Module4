@@ -1,7 +1,6 @@
 package com.casestudy.service.impl.customer;
 
 import com.casestudy.model.customer.Customer;
-import com.casestudy.model.service.Services;
 import com.casestudy.repository.customer.ICustomerRepository;
 import com.casestudy.service.customer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,13 +17,13 @@ public class CustomerService implements ICustomerService {
     private ICustomerRepository customerRepository;
 
     @Override
-    public Page<Customer> showAllCustomer(Pageable pageable, String search) {
-        return customerRepository.findAll(pageable, search);
+    public Page<Customer> showAllCustomer(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 
     @Override
-    public List<Customer> findCustomer() {
-        return customerRepository.findByDto();
+    public Page<Customer> findCustomer(Pageable pageable, String search) {
+        return customerRepository.findByName(pageable, search);
     }
 
     @Override

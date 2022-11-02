@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public interface ICustomerService {
 
-    Page<Customer> showAllCustomer(Pageable pageable, String search);
+    Page<Customer> showAllCustomer(Pageable pageable);
 
-    List<Customer> findCustomer();
+    Page<Customer> findCustomer(Pageable pageable, String search);
 
     Optional<Customer> findById(int id);
 

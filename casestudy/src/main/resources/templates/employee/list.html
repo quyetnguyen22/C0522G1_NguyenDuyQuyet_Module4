@@ -260,17 +260,26 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item">
-                    <a class="page-link" th:href="@{'/customer/list'(page=${allEmployee.number - 1},search=${search})}"
+                    <a class="page-link" th:href="@{'/employee/list'(page=${allEmployee.number - 1},search=${search})}"
                        th:if="${allEmployee.hasPrevious()}">Previous</a>
                 </li>
-                <li class="page-item" th:each="star:${#numbers.sequence(1,allEmployee.totalPages - 1)}">
-                    <a class="page-link" tyle="color: white"
-                       th:href="@{'/customer/list'(page=${star},search=${search})}">
-                        <span th:text="${star}"></span>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{'/employee/list'(page=${allEmployee.number},search=${search})}"
+                       th:text="${allEmployee.number + 1}">1
+                    </a>
+                </li>
+                <li class="page-item" th:if="${allEmployee.hasNext()}">
+                    <a class="page-link" th:href="@{'/employee/list'(page=${allEmployee.number + 1},search=${search})}"
+                       th:text="${allEmployee.number + 2}">2
+                    </a>
+                </li>
+                <li class="page-item" th:if="(${allEmployee.totalPages} - ${allEmployee.number} > 2)">
+                    <a class="page-link" th:href="@{'/employee/list'(page=${allEmployee.number + 2},search=${search})}"
+                       th:text="${allEmployee.number + 3}">3
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" th:href="@{'/customer/list'(page=${allEmployee.number + 1},search=${search})}"
+                    <a class="page-link" th:href="@{'/employee/list'(page=${allEmployee.number + 1},search=${search})}"
                        th:if="${allEmployee.hasNext()}">Next</a>
                 </li>
             </ul>
